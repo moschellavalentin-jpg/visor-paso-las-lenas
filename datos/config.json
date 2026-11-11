@@ -2,7 +2,7 @@
  "textos": {
   "titulo": "Acceso argentino al paso Las Leñas",
   "subtitulo": "Visor de la propuesta: de El Sosneado al portal N4",
-  "pie": "Versión 0.3 (muestra) · 11/11/2026 · Trabajo académico: no es cartografía oficial. Luca Valentín Moschella · Cartografía Aplicada · UMaza",
+  "pie": "Versión 0.4 (muestra) · 11/11/2026 · Trabajo académico: no es cartografía oficial. Luca Valentín Moschella · Cartografía Aplicada · UMaza",
   "epigrafe_foto": "Laguna El Sosneado, diciembre de 2025. Foto: L. V. Moschella.",
   "fotos": [
    "laguna_1.jpg",
@@ -68,6 +68,10 @@
    [
     "El portal definitivo",
     "Si el estudio del túnel eligiera N1, cambiarían los últimos kilómetros del acceso."
+   ],
+   [
+    "El agua en el camino",
+    "Escenario indicativo, no modelo hidráulico: no hay caudales ni lluvias de diseño. Con una lluvia de diseño (por ejemplo, de 100 años), el nivel saldría del estudio hidrológico, que no está hecho."
    ]
   ],
   "perfiles": {
@@ -274,7 +278,99 @@
     "items": [],
     "fuente": "Fuente: informe, 3.2, 3.3, 4 y 4.6; registro de fuentes del proyecto."
    }
-  ]
+  ],
+  "ayuda": {
+   "titulo": "Cómo usar el visor",
+   "sub": "Visor web de la propuesta, para la computadora y el celular · el enlace y el código QR, al pie de esta ficha",
+   "que_es": "El visor muestra la propuesta de acceso argentino al paso Las Leñas sobre un mapa que se mueve y se acerca. Cada capa aparece a partir de su escala, como en las láminas: lejos se ve el corredor; cerca, cada obra con su ficha. Suma lo que el papel no puede: perfiles que se dibujan, un recorrido guiado, un vuelo 3D y el agua sobre el camino. En línea se abre con el enlace o el código QR; sin conexión, con la carpeta del visor y su ABRIR_VISOR.bat, y entonces usa los mapas base propios.",
+   "zonas_txt": [
+    "**Los botones de arriba** abren cada herramienta (abajo). «?» abre esta ayuda. En el celular están en «☰ Menú».",
+    "**Escala y mapa base.** La escala aproximada y el nivel de detalle; debajo, el mapa base: Argenmap del IGN (pide conexión), la imagen Sentinel-2 o el relieve sombreado propios.",
+    "**Capas y leyenda.** Cada capa con su signo; la casilla la enciende o la apaga. Las grises todavía no se ven a esa escala: aparecen al acercarse.",
+    "**El mapa.** Se arrastra para moverlo y se acerca con la rueda, con doble clic o pellizcando en el celular. Un clic sobre un elemento abre su ficha, con su fuente.",
+    "**Acercar, alejar y el norte.** La brújula vuelve a poner el norte arriba.",
+    "**Barra de escala y créditos** de los datos y del mapa base."
+   ],
+   "herramientas": [
+    "**Perfiles:** el longitudinal del tronco y del túnel, los tres transversales y «Dibujar un perfil»: clic para marcar puntos, doble clic o Terminar para cerrar. Al pasar sobre el gráfico se marca el lugar en el mapa.",
+    "**Recorrido guiado:** la propuesta en ocho pasos, con Anterior y Siguiente.",
+    "**Vuelo 3D:** un vuelo sobre el camino con ocho paradas; Seguir o Pausa, la velocidad e «Ir a una parada».",
+    "**Agua:** la escorrentía y el anegamiento con un nivel de 0,5, 1, 2 o 3 m, con la lista de cruces de cauce y de tramos a lo largo del río. Es un escenario indicativo, no un modelo hidráulico.",
+    "**Ir al km:** un kilómetro del tronco, de 0 (El Sosneado) a 77,5 (portal N4): dice en qué tramo cae y qué hay cerca.",
+    "**Lo que no se sabe, Cómo se hizo, Descargas** (cada capa en GeoJSON, con su fuente y su licencia), **Informe** (el informe y las cuatro láminas en PDF) y **Acerca de**."
+   ],
+   "glosario": [
+    [
+     "Anegamiento",
+     "Lo que quedaría bajo el agua si el nivel subiera una altura dada sobre su cauce. En el visor se calcula con HAND: no hay caudales ni lluvias de diseño."
+    ],
+    [
+     "Apartadero",
+     "Ensanche al costado de la calzada para detenerse sin ocupar el carril. Con los puestos intermedios, son las únicas instalaciones dentro de la Reserva."
+    ],
+    [
+     "Área de aporte",
+     "La superficie que drena hacia un punto de un cauce. Describe el relieve: no es caudal."
+    ],
+    [
+     "Cono de deyección",
+     "Abanico de sedimentos al pie de una quebrada, donde el agua se abre en varios brazos; ahí va una obra de cono: alcantarillas o un badén con encauzamiento."
+    ],
+    [
+     "Defensa de margen",
+     "Donde el camino corre junto al río sin cruzarlo: el terraplén va elevado y protegido del lado del río, en lugar de puentes."
+    ],
+    [
+     "Escorrentía",
+     "El agua que corre sobre el terreno hacia los cauces. En el visor, las partículas siguen la dirección de flujo calculada con GRASS."
+    ],
+    [
+     "HAND",
+     "Altura sobre el drenaje más cercano (en inglés, Height Above the Nearest Drainage): cuánto más alto está cada lugar que el cauce al que drena."
+    ],
+    [
+     "Lecho activo",
+     "La parte del cauce sin vegetación por donde corre el agua, visible en las imágenes Sentinel-2."
+    ],
+    [
+     "Modelo de elevación",
+     "La grilla de cotas del terreno: Copernicus, de 30 m. Es de superficie, no del suelo desnudo."
+    ],
+    [
+     "Obra de arte",
+     "La que deja pasar el agua bajo el camino: alcantarilla, puente o viaducto."
+    ],
+    [
+     "Perfil",
+     "El corte del terreno: longitudinal, a lo largo del eje del camino; transversal, de través."
+    ],
+    [
+     "Portal",
+     "La boca del túnel. N4 es el portal argentino adoptado (MOP, 2015)."
+    ],
+    [
+     "Rasante",
+     "La línea del camino terminado en el perfil longitudinal: sobre el terreno va en terraplén y debajo, en corte."
+    ],
+    [
+     "Red de drenaje",
+     "Los cauces derivados del modelo de elevación; la adoptada junta el agua de 10.000 celdas o más (9 km²)."
+    ],
+    [
+     "Tronco",
+     "El camino principal de la propuesta, de El Sosneado (km 0) al portal N4 (km 77,5)."
+    ],
+    [
+     "Viaducto",
+     "Puente largo sobre pilas; el de la llegada al portal N4 tiene 621 m."
+    ],
+    [
+     "Zona de camino",
+     "La franja que ocupa el camino: 100 m de ancho (DNV, 2010). Es un criterio de proyecto, no una zona legal vigente."
+    ]
+   ],
+   "imagen": "datos/ayuda/visor_zonas.jpg"
+  }
  },
  "bases": [
   {
@@ -290,19 +386,63 @@
    "id": "sentinel",
    "titulo": "Imagen Sentinel-2 (propia)",
    "requiere_conexion": false,
-   "atribucion": "Contiene datos modificados de Copernicus Sentinel (2026).",
-   "teselas": "datos/teselas/sentinel/{z}/{x}/{y}.webp",
+   "atribucion": "Contiene datos modificados de Copernicus Sentinel (2025-2026).",
    "esquema": "xyz",
-   "maxzoom": 14
+   "capas": [
+    {
+     "teselas": "datos/teselas/sentinel_mza/{z}/{x}/{y}.webp",
+     "minzoom": 5,
+     "maxzoom": 11,
+     "bounds": [
+      -70.68,
+      -37.68,
+      -66.38,
+      -31.9
+     ]
+    },
+    {
+     "teselas": "datos/teselas/sentinel/{z}/{x}/{y}.webp",
+     "minzoom": 12,
+     "maxzoom": 14,
+     "bounds": [
+      -70.25078,
+      -35.13747,
+      -69.51202,
+      -34.53733
+     ]
+    }
+   ]
   },
   {
    "id": "sombreado",
    "titulo": "Relieve sombreado (propio)",
    "requiere_conexion": false,
-   "atribucion": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
-   "teselas": "datos/teselas/sombreado/{z}/{x}/{y}.webp",
    "esquema": "xyz",
-   "maxzoom": 13
+   "atribucion": "Copernicus DEM GLO-30 (zona del corredor) y GLO-90 (Mendoza) © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "capas": [
+    {
+     "teselas": "datos/teselas/sombreado_mza/{z}/{x}/{y}.webp",
+     "minzoom": 5,
+     "maxzoom": 11,
+     "bounds": [
+      -70.68,
+      -37.68,
+      -66.38,
+      -31.9
+     ]
+    },
+    {
+     "teselas": "datos/teselas/sombreado/{z}/{x}/{y}.webp",
+     "minzoom": 12,
+     "maxzoom": 13,
+     "bounds": [
+      -70.25078,
+      -35.13747,
+      -69.51202,
+      -34.53733
+     ]
+    }
+   ]
   }
  ],
  "capas": [
@@ -455,7 +595,7 @@
    "grupo": "Base",
    "minzoom": 11,
    "fuente": "Elaboración propia sobre imágenes Sentinel-2.",
-   "licencia": "Contiene datos modificados de Copernicus Sentinel (2026).",
+   "licencia": "Contiene datos modificados de Copernicus Sentinel (2025-2026).",
    "texto": "El lecho activo visible en las imágenes, con el borde suavizado para dibujarlo.",
    "descargable": true,
    "visible": true,
@@ -846,12 +986,38 @@
    "grupo": "Encendibles",
    "minzoom": 0,
    "fuente": "Elaboración propia sobre imágenes Sentinel-2 (junio a septiembre, 2019-2025).",
-   "licencia": "Contiene datos modificados de Copernicus Sentinel (2026).",
+   "licencia": "Contiene datos modificados de Copernicus Sentinel (2025-2026).",
    "texto": "Más oscuro, más fechas con nieve.",
    "descargable": true,
    "visible": false,
    "archivo": "datos/capas/nieve.geojson",
    "elementos": 78
+  },
+  {
+   "id": "escorrentia",
+   "titulo": "Escorrentía (escenario indicativo)",
+   "grupo": "Agua",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre GRASS (r.watershed) y Copernicus DEM.",
+   "licencia": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "texto": "Hacia dónde escurre el agua; no es caudal.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/escorrentia.geojson",
+   "elementos": 728
+  },
+  {
+   "id": "anegamiento",
+   "titulo": "Anegamiento (HAND, escenario indicativo)",
+   "grupo": "Agua",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre GRASS (r.watershed) y Copernicus DEM.",
+   "licencia": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "texto": "Lo que queda por debajo del nivel elegido sobre su cauce.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/anegamiento.geojson",
+   "elementos": 4
   }
  ],
  "zona": [
@@ -860,7 +1026,7 @@
   -69.51202,
   -34.53733
  ],
- "version": "0.3 (muestra)",
+ "version": "0.4 (muestra)",
  "fecha": "11/11/2026",
  "licencias": {
   "propia": "Elaboración propia (trabajo académico): uso con cita del autor.",
@@ -870,7 +1036,7 @@
   "ley": "Ley 8516 de Mendoza (límite digitalizado de sus coordenadas): elaboración propia, uso con cita.",
   "osm": "© colaboradores de OpenStreetMap, ODbL 1.0.",
   "copernicus_dem": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
-  "sentinel": "Contiene datos modificados de Copernicus Sentinel (2026)."
+  "sentinel": "Contiene datos modificados de Copernicus Sentinel (2025-2026)."
  },
  "recorrido": [
   {
@@ -1059,6 +1225,7 @@
   "teselas": "datos/teselas/relieve/{z}/{x}/{y}.png",
   "minzoom": 8,
   "maxzoom": 12,
+  "maxzoom_movil": 10,
   "codificacion": "terrarium",
   "atribucion": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
   "bounds": [
@@ -1067,5 +1234,1314 @@
    -69.29414,
    -34.35708
   ]
- }
+ },
+ "agua": {
+  "rotulo": "Escenario indicativo, no modelo hidráulico: no hay caudales ni lluvias de diseño. Con una lluvia de diseño (por ejemplo, de 100 años), el nivel saldría del estudio hidrológico, que no está hecho.",
+  "niveles": [
+   0.5,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "km": {
+   "0.5": {
+    "tramos": [
+     [
+      2.7,
+      2.9
+     ],
+     [
+      15.9,
+      16.1
+     ],
+     [
+      17.9,
+      18.0
+     ],
+     [
+      30.1,
+      30.2
+     ],
+     [
+      43.0,
+      43.1
+     ],
+     [
+      46.2,
+      46.3
+     ],
+     [
+      46.5,
+      46.6
+     ],
+     [
+      57.9,
+      58.0
+     ],
+     [
+      60.0,
+      60.1
+     ],
+     [
+      65.5,
+      65.6
+     ],
+     [
+      66.8,
+      66.9
+     ],
+     [
+      71.2,
+      71.3
+     ],
+     [
+      75.2,
+      75.3
+     ],
+     [
+      75.6,
+      75.8
+     ],
+     [
+      77.0,
+      77.2
+     ],
+     [
+      77.3,
+      77.5
+     ]
+    ],
+    "km": 2.2,
+    "cruces": [
+     {
+      "desde": 2.7,
+      "hasta": 2.9,
+      "largo_m": 270,
+      "obra": "puente (km 2,776)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 15.9,
+      "hasta": 16.1,
+      "largo_m": 240,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 15,867 a 16,166); puente (km 15,993)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 17.9,
+      "hasta": 18.0,
+      "largo_m": 60,
+      "obra": "alcantarilla mayor o puente menor (km 17,940); alcantarilla mayor o puente menor (km 18,084)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 30.1,
+      "hasta": 30.2,
+      "largo_m": 60,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 29,813 a 30,240)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 43.0,
+      "hasta": 43.1,
+      "largo_m": 120,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 43,098 a 43,390)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 60.0,
+      "hasta": 60.1,
+      "largo_m": 90,
+      "obra": "alcantarilla mayor o puente menor (km 60,025)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 66.8,
+      "hasta": 66.9,
+      "largo_m": 60,
+      "obra": "puente (km 66,858)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 71.2,
+      "hasta": 71.3,
+      "largo_m": 180,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 71,278 a 71,378)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 75.6,
+      "hasta": 75.8,
+      "largo_m": 210,
+      "obra": "alcantarilla mayor o puente menor (km 75,717)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 77.0,
+      "hasta": 77.2,
+      "largo_m": 150,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     },
+     {
+      "desde": 77.3,
+      "hasta": 77.5,
+      "largo_m": 180,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     }
+    ],
+    "a_lo_largo": [
+     {
+      "desde": 46.2,
+      "hasta": 46.3,
+      "largo_m": 150,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 913.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.5,
+      "hasta": 46.6,
+      "largo_m": 60,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 911.6,
+      "obras_menores": []
+     },
+     {
+      "desde": 57.9,
+      "hasta": 58.0,
+      "largo_m": 60,
+      "defensa": "no: la defensa de margen (km 57,7 a 57,8) queda a 90 m",
+      "con_defensa": "no",
+      "cauce_km2": 731.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 65.5,
+      "hasta": 65.6,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 19.8,
+      "obras_menores": []
+     },
+     {
+      "desde": 75.2,
+      "hasta": 75.3,
+      "largo_m": 180,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.8,
+      "obras_menores": []
+     }
+    ],
+    "totales": {
+     "cruces": 11,
+     "cruces_km": 1.6,
+     "cruces_sin_obra": 0,
+     "a_lo_largo": 5,
+     "a_lo_largo_km": 0.5,
+     "a_lo_largo_con_defensa": 2,
+     "a_lo_largo_en_parte": 0,
+     "a_lo_largo_sin_defensa": 3,
+     "a_lo_largo_sin_defensa_km": 0.3
+    }
+   },
+   "1.0": {
+    "tramos": [
+     [
+      2.7,
+      3.0
+     ],
+     [
+      13.9,
+      14.0
+     ],
+     [
+      15.9,
+      16.1
+     ],
+     [
+      17.9,
+      18.1
+     ],
+     [
+      18.4,
+      18.5
+     ],
+     [
+      30.1,
+      30.2
+     ],
+     [
+      43.0,
+      43.1
+     ],
+     [
+      46.2,
+      46.3
+     ],
+     [
+      46.5,
+      46.7
+     ],
+     [
+      57.9,
+      58.0
+     ],
+     [
+      59.9,
+      60.1
+     ],
+     [
+      64.5,
+      64.6
+     ],
+     [
+      64.7,
+      64.8
+     ],
+     [
+      65.2,
+      65.2
+     ],
+     [
+      65.5,
+      65.6
+     ],
+     [
+      66.8,
+      66.9
+     ],
+     [
+      71.1,
+      71.4
+     ],
+     [
+      71.7,
+      71.8
+     ],
+     [
+      75.1,
+      75.3
+     ],
+     [
+      75.6,
+      75.8
+     ],
+     [
+      77.0,
+      77.2
+     ],
+     [
+      77.3,
+      77.5
+     ]
+    ],
+    "km": 3.3,
+    "cruces": [
+     {
+      "desde": 2.7,
+      "hasta": 3.0,
+      "largo_m": 360,
+      "obra": "puente (km 2,776)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 13.9,
+      "hasta": 14.0,
+      "largo_m": 60,
+      "obra": "puente (km 13,919)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 15.9,
+      "hasta": 16.1,
+      "largo_m": 240,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 15,867 a 16,166); puente (km 15,993)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 17.9,
+      "hasta": 18.1,
+      "largo_m": 150,
+      "obra": "alcantarilla mayor o puente menor (km 17,940); alcantarilla mayor o puente menor (km 18,084); alcantarilla mayor o puente menor (km 18,185)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 30.1,
+      "hasta": 30.2,
+      "largo_m": 90,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 29,813 a 30,240)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 43.0,
+      "hasta": 43.1,
+      "largo_m": 120,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 43,098 a 43,390)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 59.9,
+      "hasta": 60.1,
+      "largo_m": 120,
+      "obra": "alcantarilla mayor o puente menor (km 60,025)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 66.8,
+      "hasta": 66.9,
+      "largo_m": 60,
+      "obra": "puente (km 66,858)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 71.1,
+      "hasta": 71.4,
+      "largo_m": 240,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 71,278 a 71,378)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 75.6,
+      "hasta": 75.8,
+      "largo_m": 210,
+      "obra": "alcantarilla mayor o puente menor (km 75,717)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 77.0,
+      "hasta": 77.2,
+      "largo_m": 240,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     },
+     {
+      "desde": 77.3,
+      "hasta": 77.5,
+      "largo_m": 180,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     }
+    ],
+    "a_lo_largo": [
+     {
+      "desde": 18.4,
+      "hasta": 18.5,
+      "largo_m": 60,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 11.1,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.2,
+      "hasta": 46.3,
+      "largo_m": 150,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 913.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.5,
+      "hasta": 46.7,
+      "largo_m": 180,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 911.6,
+      "obras_menores": []
+     },
+     {
+      "desde": 57.9,
+      "hasta": 58.0,
+      "largo_m": 120,
+      "defensa": "no: la defensa de margen (km 57,7 a 57,8) queda a 90 m",
+      "con_defensa": "no",
+      "cauce_km2": 731.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 64.5,
+      "hasta": 64.6,
+      "largo_m": 120,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 21.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 64.7,
+      "hasta": 64.8,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.8,
+      "obras_menores": [
+       "alcantarilla (km 64,813; 0,96 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 65.2,
+      "hasta": 65.2,
+      "largo_m": 60,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 22.4,
+      "obras_menores": []
+     },
+     {
+      "desde": 65.5,
+      "hasta": 65.6,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 19.8,
+      "obras_menores": []
+     },
+     {
+      "desde": 71.7,
+      "hasta": 71.8,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 69.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 75.1,
+      "hasta": 75.3,
+      "largo_m": 270,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.8,
+      "obras_menores": []
+     }
+    ],
+    "totales": {
+     "cruces": 12,
+     "cruces_km": 2.1,
+     "cruces_sin_obra": 0,
+     "a_lo_largo": 10,
+     "a_lo_largo_km": 1.2,
+     "a_lo_largo_con_defensa": 2,
+     "a_lo_largo_en_parte": 0,
+     "a_lo_largo_sin_defensa": 8,
+     "a_lo_largo_sin_defensa_km": 0.9
+    }
+   },
+   "2.0": {
+    "tramos": [
+     [
+      2.6,
+      3.1
+     ],
+     [
+      12.2,
+      12.3
+     ],
+     [
+      13.9,
+      14.0
+     ],
+     [
+      15.9,
+      16.1
+     ],
+     [
+      17.5,
+      17.7
+     ],
+     [
+      17.8,
+      18.2
+     ],
+     [
+      18.4,
+      18.5
+     ],
+     [
+      18.9,
+      19.0
+     ],
+     [
+      30.0,
+      30.2
+     ],
+     [
+      43.0,
+      43.2
+     ],
+     [
+      44.8,
+      44.8
+     ],
+     [
+      45.2,
+      45.3
+     ],
+     [
+      45.5,
+      45.9
+     ],
+     [
+      46.0,
+      46.4
+     ],
+     [
+      46.5,
+      46.8
+     ],
+     [
+      53.8,
+      53.9
+     ],
+     [
+      54.0,
+      54.3
+     ],
+     [
+      57.5,
+      58.1
+     ],
+     [
+      59.9,
+      60.2
+     ],
+     [
+      64.5,
+      64.9
+     ],
+     [
+      65.1,
+      65.3
+     ],
+     [
+      65.4,
+      65.6
+     ],
+     [
+      66.8,
+      66.9
+     ],
+     [
+      71.1,
+      71.4
+     ],
+     [
+      71.7,
+      71.9
+     ],
+     [
+      75.0,
+      75.4
+     ],
+     [
+      75.6,
+      75.8
+     ],
+     [
+      77.0,
+      77.5
+     ]
+    ],
+    "km": 7.0,
+    "cruces": [
+     {
+      "desde": 2.6,
+      "hasta": 3.1,
+      "largo_m": 540,
+      "obra": "puente (km 2,776)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 12.2,
+      "hasta": 12.3,
+      "largo_m": 120,
+      "obra": "puente (km 12,370)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 13.9,
+      "hasta": 14.0,
+      "largo_m": 60,
+      "obra": "puente (km 13,919)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 15.9,
+      "hasta": 16.1,
+      "largo_m": 240,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 15,867 a 16,166); puente (km 15,993)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 17.8,
+      "hasta": 18.2,
+      "largo_m": 360,
+      "obra": "alcantarilla mayor o puente menor (km 17,940); alcantarilla mayor o puente menor (km 18,084); alcantarilla mayor o puente menor (km 18,185)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 30.0,
+      "hasta": 30.2,
+      "largo_m": 150,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 29,813 a 30,240)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 43.0,
+      "hasta": 43.2,
+      "largo_m": 180,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 43,098 a 43,390)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 59.9,
+      "hasta": 60.2,
+      "largo_m": 210,
+      "obra": "alcantarilla mayor o puente menor (km 60,025)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 66.8,
+      "hasta": 66.9,
+      "largo_m": 90,
+      "obra": "puente (km 66,858)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 71.1,
+      "hasta": 71.4,
+      "largo_m": 270,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 71,278 a 71,378)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 75.6,
+      "hasta": 75.8,
+      "largo_m": 270,
+      "obra": "alcantarilla mayor o puente menor (km 75,717)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 77.0,
+      "hasta": 77.5,
+      "largo_m": 570,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     }
+    ],
+    "a_lo_largo": [
+     {
+      "desde": 17.5,
+      "hasta": 17.7,
+      "largo_m": 150,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.2,
+      "obras_menores": []
+     },
+     {
+      "desde": 18.4,
+      "hasta": 18.5,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 11.1,
+      "obras_menores": []
+     },
+     {
+      "desde": 18.9,
+      "hasta": 19.0,
+      "largo_m": 90,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.3,
+      "obras_menores": [
+       "obra de cono (alcantarillas o badén con encauzamiento) (km 19,033 a 19,317; 7,68 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 44.8,
+      "hasta": 44.8,
+      "largo_m": 90,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 915.7,
+      "obras_menores": []
+     },
+     {
+      "desde": 45.2,
+      "hasta": 45.3,
+      "largo_m": 120,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 915.1,
+      "obras_menores": []
+     },
+     {
+      "desde": 45.5,
+      "hasta": 45.9,
+      "largo_m": 330,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 913.6,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.0,
+      "hasta": 46.4,
+      "largo_m": 360,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 913.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.5,
+      "hasta": 46.8,
+      "largo_m": 360,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 912.3,
+      "obras_menores": []
+     },
+     {
+      "desde": 53.8,
+      "hasta": 53.9,
+      "largo_m": 90,
+      "defensa": "no: la defensa de margen (km 53,9 a 54,6) empieza o termina en el borde de este tramo",
+      "con_defensa": "no",
+      "cauce_km2": 777.3,
+      "obras_menores": []
+     },
+     {
+      "desde": 54.0,
+      "hasta": 54.3,
+      "largo_m": 270,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 53,9 a 54,6)",
+      "con_defensa": "si",
+      "cauce_km2": 768.4,
+      "obras_menores": []
+     },
+     {
+      "desde": 57.5,
+      "hasta": 58.1,
+      "largo_m": 540,
+      "defensa": "en parte: la defensa de margen (km 57,7 a 57,8) cubre 128 de sus 540 m",
+      "con_defensa": "en parte",
+      "cauce_km2": 731.7,
+      "obras_menores": []
+     },
+     {
+      "desde": 64.5,
+      "hasta": 64.9,
+      "largo_m": 450,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 31.2,
+      "obras_menores": [
+       "alcantarilla (km 64,813; 0,96 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 65.1,
+      "hasta": 65.3,
+      "largo_m": 150,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 25.6,
+      "obras_menores": []
+     },
+     {
+      "desde": 65.4,
+      "hasta": 65.6,
+      "largo_m": 210,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 23.2,
+      "obras_menores": []
+     },
+     {
+      "desde": 71.7,
+      "hasta": 71.9,
+      "largo_m": 180,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 69.0,
+      "obras_menores": []
+     },
+     {
+      "desde": 75.0,
+      "hasta": 75.4,
+      "largo_m": 420,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.9,
+      "obras_menores": []
+     }
+    ],
+    "totales": {
+     "cruces": 12,
+     "cruces_km": 3.1,
+     "cruces_sin_obra": 0,
+     "a_lo_largo": 16,
+     "a_lo_largo_km": 3.9,
+     "a_lo_largo_con_defensa": 6,
+     "a_lo_largo_en_parte": 1,
+     "a_lo_largo_sin_defensa": 9,
+     "a_lo_largo_sin_defensa_km": 1.8
+    }
+   },
+   "3.0": {
+    "tramos": [
+     [
+      2.6,
+      3.4
+     ],
+     [
+      12.2,
+      12.3
+     ],
+     [
+      13.9,
+      14.0
+     ],
+     [
+      15.9,
+      16.1
+     ],
+     [
+      16.7,
+      16.8
+     ],
+     [
+      17.5,
+      18.2
+     ],
+     [
+      18.4,
+      18.6
+     ],
+     [
+      18.9,
+      19.2
+     ],
+     [
+      24.5,
+      24.6
+     ],
+     [
+      30.0,
+      30.2
+     ],
+     [
+      37.2,
+      37.2
+     ],
+     [
+      43.0,
+      43.2
+     ],
+     [
+      44.8,
+      44.8
+     ],
+     [
+      45.2,
+      45.3
+     ],
+     [
+      45.5,
+      46.4
+     ],
+     [
+      46.5,
+      46.8
+     ],
+     [
+      47.4,
+      47.4
+     ],
+     [
+      53.8,
+      54.3
+     ],
+     [
+      54.6,
+      54.7
+     ],
+     [
+      57.4,
+      58.2
+     ],
+     [
+      58.3,
+      58.4
+     ],
+     [
+      59.9,
+      60.2
+     ],
+     [
+      64.5,
+      65.0
+     ],
+     [
+      65.1,
+      65.7
+     ],
+     [
+      66.8,
+      66.9
+     ],
+     [
+      71.1,
+      71.4
+     ],
+     [
+      71.6,
+      71.9
+     ],
+     [
+      74.9,
+      75.4
+     ],
+     [
+      75.6,
+      75.8
+     ],
+     [
+      76.6,
+      76.7
+     ],
+     [
+      76.9,
+      77.5
+     ]
+    ],
+    "km": 9.3,
+    "cruces": [
+     {
+      "desde": 2.6,
+      "hasta": 3.4,
+      "largo_m": 840,
+      "obra": "puente (km 2,776); alcantarilla (km 3,366)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 12.2,
+      "hasta": 12.3,
+      "largo_m": 180,
+      "obra": "puente (km 12,370)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 13.9,
+      "hasta": 14.0,
+      "largo_m": 120,
+      "obra": "puente (km 13,919)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 15.9,
+      "hasta": 16.1,
+      "largo_m": 240,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 15,867 a 16,166); puente (km 15,993)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 17.5,
+      "hasta": 18.2,
+      "largo_m": 720,
+      "obra": "alcantarilla mayor o puente menor (km 17,940); alcantarilla mayor o puente menor (km 18,084); alcantarilla mayor o puente menor (km 18,185)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 24.5,
+      "hasta": 24.6,
+      "largo_m": 90,
+      "obra": "puente (km 24,425); obra de cono (alcantarillas o badén con encauzamiento) (km 24,685 a 24,866)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 30.0,
+      "hasta": 30.2,
+      "largo_m": 150,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 29,813 a 30,240)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 37.2,
+      "hasta": 37.2,
+      "largo_m": 60,
+      "obra": "puente (km 37,198)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 43.0,
+      "hasta": 43.2,
+      "largo_m": 180,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 43,098 a 43,390)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 58.3,
+      "hasta": 58.4,
+      "largo_m": 60,
+      "obra": "alcantarilla mayor o puente menor (km 58,245); puente (km 58,375)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 59.9,
+      "hasta": 60.2,
+      "largo_m": 210,
+      "obra": "alcantarilla mayor o puente menor (km 60,025)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 65.1,
+      "hasta": 65.7,
+      "largo_m": 600,
+      "obra": "alcantarilla mayor o puente menor (km 65,797)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 66.8,
+      "hasta": 66.9,
+      "largo_m": 90,
+      "obra": "puente (km 66,858)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 71.1,
+      "hasta": 71.4,
+      "largo_m": 270,
+      "obra": "obra de cono (alcantarillas o badén con encauzamiento) (km 71,278 a 71,378)",
+      "por": "red de una dirección"
+     },
+     {
+      "desde": 75.6,
+      "hasta": 75.8,
+      "largo_m": 270,
+      "obra": "alcantarilla mayor o puente menor (km 75,717)",
+      "por": "obra sobre el cauce de la red"
+     },
+     {
+      "desde": 76.9,
+      "hasta": 77.5,
+      "largo_m": 637,
+      "obra": "viaducto de 621 m (km 76,906 a 77,527)",
+      "por": "viaducto"
+     }
+    ],
+    "a_lo_largo": [
+     {
+      "desde": 16.7,
+      "hasta": 16.8,
+      "largo_m": 60,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.2,
+      "obras_menores": []
+     },
+     {
+      "desde": 18.4,
+      "hasta": 18.6,
+      "largo_m": 180,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 11.5,
+      "obras_menores": []
+     },
+     {
+      "desde": 18.9,
+      "hasta": 19.2,
+      "largo_m": 240,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 9.3,
+      "obras_menores": [
+       "obra de cono (alcantarillas o badén con encauzamiento) (km 19,033 a 19,317; 7,68 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 44.8,
+      "hasta": 44.8,
+      "largo_m": 90,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 915.7,
+      "obras_menores": []
+     },
+     {
+      "desde": 45.2,
+      "hasta": 45.3,
+      "largo_m": 150,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 915.1,
+      "obras_menores": []
+     },
+     {
+      "desde": 45.5,
+      "hasta": 46.4,
+      "largo_m": 840,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 913.6,
+      "obras_menores": []
+     },
+     {
+      "desde": 46.5,
+      "hasta": 46.8,
+      "largo_m": 360,
+      "defensa": "sí: tramo junto al río Atuel con defensa de margen (km 44,2 a 46,9)",
+      "con_defensa": "si",
+      "cauce_km2": 912.3,
+      "obras_menores": []
+     },
+     {
+      "desde": 47.4,
+      "hasta": 47.4,
+      "largo_m": 60,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 477.6,
+      "obras_menores": [
+       "alcantarilla (km 47,321; 0,61 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 53.8,
+      "hasta": 54.3,
+      "largo_m": 450,
+      "defensa": "en parte: la defensa de margen (km 53,9 a 54,6) cubre 361 de sus 450 m",
+      "con_defensa": "en parte",
+      "cauce_km2": 777.3,
+      "obras_menores": []
+     },
+     {
+      "desde": 54.6,
+      "hasta": 54.7,
+      "largo_m": 90,
+      "defensa": "no: la defensa de margen (km 53,9 a 54,6) queda a 37 m",
+      "con_defensa": "no",
+      "cauce_km2": 765.0,
+      "obras_menores": [
+       "alcantarilla mayor o puente menor (km 54,716; 6,14 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 57.4,
+      "hasta": 58.2,
+      "largo_m": 750,
+      "defensa": "en parte: la defensa de margen (km 57,7 a 57,8) cubre 128 de sus 750 m",
+      "con_defensa": "en parte",
+      "cauce_km2": 732.7,
+      "obras_menores": [
+       "obra de cono (alcantarillas o badén con encauzamiento) (km 57,253 a 57,383; 0,63 km² de aporte)",
+       "alcantarilla mayor o puente menor (km 58,245; 3,25 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 64.5,
+      "hasta": 65.0,
+      "largo_m": 480,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 31.2,
+      "obras_menores": [
+       "alcantarilla (km 64,813; 0,96 km² de aporte)"
+      ]
+     },
+     {
+      "desde": 71.6,
+      "hasta": 71.9,
+      "largo_m": 300,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 106.7,
+      "obras_menores": []
+     },
+     {
+      "desde": 74.9,
+      "hasta": 75.4,
+      "largo_m": 480,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 10.2,
+      "obras_menores": []
+     },
+     {
+      "desde": 76.6,
+      "hasta": 76.7,
+      "largo_m": 60,
+      "defensa": null,
+      "con_defensa": "no",
+      "cauce_km2": 18.6,
+      "obras_menores": []
+     }
+    ],
+    "totales": {
+     "cruces": 16,
+     "cruces_km": 4.7,
+     "cruces_sin_obra": 0,
+     "a_lo_largo": 15,
+     "a_lo_largo_km": 4.6,
+     "a_lo_largo_con_defensa": 4,
+     "a_lo_largo_en_parte": 2,
+     "a_lo_largo_sin_defensa": 9,
+     "a_lo_largo_sin_defensa_km": 1.9
+    }
+   }
+  },
+  "escorrentia": "Las partículas siguen la dirección de flujo y el área de aporte calculadas con GRASS (r.watershed) sobre el modelo de 30 m: muestran hacia dónde escurre el agua y por dónde llega al camino, no cuánta agua ni a qué velocidad. El grosor crece con el área de aporte.",
+  "anegamiento": "HAND es la altura de cada lugar sobre el cauce al que drena (la red de 10.000 celdas), con el modelo de 30 m y la dirección de flujo de GRASS. Se pinta lo que queda por debajo del nivel elegido, a 2 km del tronco, y se listan los km del tronco que quedan por debajo.",
+  "cruces": "Donde el agua cruza el camino van las obras de arte: 9 puentes, el viaducto, 3 tramos junto al río Atuel y alcantarillas y obras menores.",
+  "clasif": "Cruce de cauce: el cauce de la red de 10.000 celdas corta el camino en ese tramo; se indica la obra prevista (lámina 3/4, o el viaducto de la lámina 4/4). Tramo a lo largo del río: el camino va junto al cauce sin cruzarlo; se indica si coincide con un tramo junto al río con defensa de margen. En rojo, lo que no tiene obra ni defensa prevista.",
+  "caja": [
+   -69.98139,
+   -34.84304,
+   -69.92737,
+   -34.81473
+  ]
+ },
+ "informe": [
+  {
+   "titulo": "Informe técnico",
+   "hoja": "A4",
+   "archivo": "descargas/INFORME_PASO_LAS_LENAS.pdf",
+   "mb": 2.4
+  },
+  {
+   "titulo": "Lámina 1/4 · Carta principal",
+   "hoja": "A0 apaisada",
+   "archivo": "descargas/L1de4_A0_carta_principal.pdf",
+   "mb": 21.2
+  },
+  {
+   "titulo": "Lámina 2/4 · Relieve y perfiles",
+   "hoja": "A3 apaisada",
+   "archivo": "descargas/L2de4_A3_relieve_perfiles.pdf",
+   "mb": 4.1
+  },
+  {
+   "titulo": "Lámina 3/4 · Drenaje y relaciones",
+   "hoja": "A2 apaisada",
+   "archivo": "descargas/L3de4_A2_drenaje_relaciones.pdf",
+   "mb": 8.9
+  },
+  {
+   "titulo": "Lámina 4/4 · Alternativas y decisiones",
+   "hoja": "A3 apaisada",
+   "archivo": "descargas/L4de4_A3_alternativas_decisiones.pdf",
+   "mb": 0.2
+  }
+ ]
 }

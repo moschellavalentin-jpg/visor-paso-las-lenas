@@ -162,7 +162,8 @@
           'Doble clic, Enter o «Terminar» para cerrar la línea; Esc la borra.');
         return;
       }
-      const m = { l: 58, r: 18, t: 34, b: 24 }, gap = 24;
+      const DOS = W < 1100;  // el resumen en dos renglones
+      const m = { l: W < 600 ? 44 : 58, r: W < 600 ? 10 : 18, t: DOS ? 46 : 34, b: 24 }, gap = 24;
       const hP = Math.max(44, Math.round((H - m.t - m.b) * 0.27)), hZ = H - m.t - m.b - gap - hP;
       const z0 = Math.floor(PD.zmin / 50) * 50 - 50, z1 = Math.ceil(PD.zmax / 50) * 50 + 50;
       const X = (dm) => m.l + dm / PD.total * (W - m.l - m.r);
@@ -171,10 +172,11 @@
       const YP = (pp) => yP + (1 - Math.min(pp, pMax) / pMax) * hP;
       const exag = (hZ / (z1 - z0)) / ((W - m.l - m.r) / PD.total);
       // resumen
-      el('text', { x: m.l, y: 14, 'font-size': 12, fill: C.texto }, svg,
-        `Largo: ${nf(PD.total / 1000, 2)} km · cota de ${nf(PD.zmin)} a ${nf(PD.zmax)} m · sube ${nf(PD.sube)} m y baja ${nf(PD.baja)} m · ` +
-        `pendiente media ${nf(PD.media, 1)} % · la mayor en 300 m: ${nf(PD.pmax, 1)} % · escala vertical: ${nf(exag, 1)} veces la horizontal` +
-        (PD.pmax > 40 ? ' (en el gráfico, más de 40 % va en el borde)' : '') + (PD.fuera ? ` · ${PD.fuera} muestras fuera del área del modelo` : ''));
+      const r1 = `Largo: ${nf(PD.total / 1000, 2)} km · cota de ${nf(PD.zmin)} a ${nf(PD.zmax)} m · sube ${nf(PD.sube)} m y baja ${nf(PD.baja)} m`;
+      const r2 = `pendiente media ${nf(PD.media, 1)} % · la mayor en 300 m: ${nf(PD.pmax, 1)} % · escala vertical: ${nf(exag, 1)} veces la horizontal` +
+        (PD.pmax > 40 ? ' (más de 40 %, en el borde)' : '') + (PD.fuera ? ` · ${PD.fuera} muestras fuera del modelo` : '');
+      if (DOS) { el('text', { x: 8, y: 14, 'font-size': 12, fill: C.texto }, svg, r1); el('text', { x: 8, y: 30, 'font-size': 12, fill: C.texto }, svg, r2); }
+      else el('text', { x: m.l, y: 14, 'font-size': 12, fill: C.texto }, svg, `${r1} · ${r2}`);
       const pasoZ = [50, 100, 200, 250, 500, 1000].find((v) => (z1 - z0) / v <= 6) || 1000;
       for (let zz = Math.ceil(z0 / pasoZ) * pasoZ; zz <= z1; zz += pasoZ) {
         el('line', { x1: m.l, x2: W - m.r, y1: Y(zz), y2: Y(zz), stroke: C.grilla, 'stroke-width': 0.7 }, svg);
@@ -235,7 +237,21 @@
 
     // ------------------------------------------------------------------ longitudinal: tronco y túnel
     function longitudinal(svg, W, H) {
-      const m = { l: 58, r: 18, t: 30, b: 24 }, gap = 26;
+      const ANGOSTO = W < 600;  // celular: leyenda en renglones, km cada 20 y sin los rótulos que se amontonan
+      const m = { l: ANGOSTO ? 44 : 58, r: ANGOSTO ? 10 : 18, t: 30, b: 24 }, gap = 26;
+      const ley = [['linea', C.tierra, 'terreno (modelo de 30 m)'], ['linea', MOR, 'rasante'], ['trazos', MOR, 'rasante del túnel'], ['area', C.corte, 'corte'],
+        ['area', C.relleno, 'relleno'], ['area', C.reserva, 'dentro de la Reserva', 0.25], ['trazos', C.texto2, 'pendiente máxima deseable'],
+        ['linea', C.texto, 'pendiente máxima absoluta (DNV, 2010)']];
+      let lx = m.l + 10, ly = 14;
+      ley.forEach(([t, c, n, op]) => {
+        const tx = el('text', { x: lx + 20, y: ly + 1, 'font-size': 11, fill: C.texto2 }, svg, n);
+        const w = 20 + tx.getComputedTextLength() + 14;
+        if (lx + w - 14 > W - m.r && lx > m.l + 10) { lx = m.l + 10; ly += 15; tx.setAttribute('x', lx + 20); tx.setAttribute('y', ly + 1); }
+        if (t === 'area') el('rect', { x: lx, y: ly - 7, width: 14, height: 9, fill: c, 'fill-opacity': op || 0.9 }, svg);
+        else el('line', { x1: lx, x2: lx + 16, y1: ly - 2.5, y2: ly - 2.5, stroke: c, 'stroke-width': 1.8, 'stroke-dasharray': t === 'trazos' ? '4 2' : null }, svg);
+        lx += w;
+      });
+      m.t = ly + 16;
       const hP = Math.max(48, Math.round((H - m.t - m.b) * 0.27));
       const hZ = H - m.t - m.b - gap - hP;
       const xMax = P.LP + P.LT;
@@ -277,15 +293,15 @@
       el('path', { d: ruta(xt, TU.rasante.map(Y)), fill: 'none', stroke: MOR, 'stroke-width': 1.8, 'stroke-dasharray': '6 3' }, svg);
       // límite internacional y lugares
       el('line', { x1: X(P.limite_km), x2: X(P.limite_km), y1: m.t, y2: m.t + hZ, stroke: C.texto, 'stroke-width': 1 }, svg);
-      el('text', { x: X(P.limite_km) + 4, y: m.t + hZ - 8, 'text-anchor': 'start', 'font-size': 11, fill: C.texto }, svg, 'Chile');
-      P.marcas.forEach((mk) => {
+      if (!ANGOSTO) el('text', { x: X(P.limite_km) + 4, y: m.t + hZ - 8, 'text-anchor': 'start', 'font-size': 11, fill: C.texto }, svg, 'Chile');
+      P.marcas.filter((mk) => !ANGOSTO || mk.nombre !== 'portal chileno').forEach((mk) => {
         const z = mk.km <= P.LP ? L.cota[cerca(L.km, mk.km)] : TU.terreno[TU.terreno.length - 1];
         const x = X(mk.km), y = Y(z), yl = Math.max(m.t + 10, y - 28);
         el('line', { x1: x, x2: x, y1: y - 5, y2: yl + 3, stroke: C.texto2, 'stroke-width': 0.7 }, svg);
         el('text', { x, y: yl, 'text-anchor': mk.nombre === 'portal chileno' ? 'end' : mk.nombre === 'portal N4' ? 'end' : 'middle', 'font-size': 11, 'font-weight': 'bold', fill: C.texto }, svg, mk.nombre);
       });
       el('text', { x: X((P.LP + P.limite_km) / 2), y: m.t + hZ - 8, 'text-anchor': 'middle', 'font-size': 11, fill: MOR }, svg, 'túnel');
-      el('text', { x: X(P.limite_km), y: m.t - 4, 'text-anchor': 'middle', 'font-size': 10.5, fill: C.texto }, svg, 'límite internacional');
+      if (!ANGOSTO) el('text', { x: X(P.limite_km), y: m.t - 4, 'text-anchor': 'middle', 'font-size': 10.5, fill: C.texto }, svg, 'límite internacional');
       // pendiente del terreno frente a la máxima de la norma
       [0, 5, 10].forEach((p) => {
         el('line', { x1: m.l, x2: X(P.LP), y1: YP(p), y2: YP(p), stroke: C.grilla, 'stroke-width': 0.7 }, svg);
@@ -296,19 +312,7 @@
       el('path', { d: escalon(0), fill: 'none', stroke: C.texto2, 'stroke-width': 1.1, 'stroke-dasharray': '4 3' }, svg);
       el('path', { d: escalon(1), fill: 'none', stroke: C.texto, 'stroke-width': 1.2 }, svg);
       el('text', { x: 13, y: yP + hP / 2, 'font-size': 11, fill: C.texto2, 'text-anchor': 'middle', transform: `rotate(-90 13 ${yP + hP / 2})` }, svg, 'pendiente');
-      for (let k = 0; k <= P.LP; k += 10) el('text', { x: X(k), y: H - 6, 'text-anchor': 'middle', 'font-size': 11, fill: C.texto2 }, svg, `km ${k}`);
-      // leyenda
-      const ley = [['linea', C.tierra, 'terreno (modelo de 30 m)'], ['linea', MOR, 'rasante'], ['trazos', MOR, 'rasante del túnel'], ['area', C.corte, 'corte'],
-        ['area', C.relleno, 'relleno'], ['area', C.reserva, 'dentro de la Reserva', 0.25], ['trazos', C.texto2, 'pendiente máxima deseable'],
-        ['linea', C.texto, 'pendiente máxima absoluta (DNV, 2010)']];
-      let lx = m.l + 10;
-      const ly = 14;
-      ley.forEach(([t, c, n, op]) => {
-        if (t === 'area') el('rect', { x: lx, y: ly - 7, width: 14, height: 9, fill: c, 'fill-opacity': op || 0.9 }, svg);
-        else el('line', { x1: lx, x2: lx + 16, y1: ly - 2.5, y2: ly - 2.5, stroke: c, 'stroke-width': 1.8, 'stroke-dasharray': t === 'trazos' ? '4 2' : null }, svg);
-        const tx = el('text', { x: lx + 20, y: ly + 1, 'font-size': 11, fill: C.texto2 }, svg, n);
-        lx += 20 + tx.getComputedTextLength() + 14;
-      });
+      for (let k = 0; k <= P.LP; k += ANGOSTO ? 20 : 10) el('text', { x: X(k), y: H - 6, 'text-anchor': 'middle', 'font-size': 11, fill: C.texto2 }, svg, `km ${k}`);
       // cursor: el punto en el gráfico y en el mapa
       const cursor = el('line', { y1: m.t, y2: yP + hP, stroke: MOR, 'stroke-width': 1, visibility: 'hidden' }, svg);
       const punto = el('circle', { r: 4.5, fill: '#ffffff', stroke: MOR, 'stroke-width': 2, visibility: 'hidden' }, svg);
@@ -348,13 +352,14 @@
 
     // ------------------------------------------------------------------ transversales: los tres a la misma escala, sin exageración vertical
     function transversales(svg, W, H) {
-      const TR = P.transversales, n = TR.length, gap = 30, m = { l: 50, r: 10, t: 24, b: 36 };
-      const wE = (W - gap * (n - 1)) / n;
+      const TR = P.transversales, n = TR.length, COL = W < 600, gap = COL ? 12 : 30, m = { l: 50, r: 10, t: 24, b: COL ? 22 : 36 };
       const rng = Math.max(...TR.map((t) => Math.max(...t.cota) - Math.min(...t.cota))) + 60;
-      const s = Math.max(3000 / (wE - m.l - m.r), rng / (H - m.t - m.b));  // metros por píxel, el mismo en los dos ejes
+      // en fila (computadora) o en columna (celular); metros por píxel, el mismo en los dos ejes
+      const wE = COL ? W : (W - gap * (n - 1)) / n, hE = COL ? (H - m.b - gap * (n - 1)) / n : H;
+      const s = COL ? Math.max(3000 / (wE - m.l - m.r), rng / (hE - m.t - 16)) : Math.max(3000 / (wE - m.l - m.r), rng / (H - m.t - m.b));
       TR.forEach((t, k) => {
-        const x0 = k * (wE + gap) + m.l, pw = 3000 / s, ph = rng / s;
-        const zc = (Math.min(...t.cota) + Math.max(...t.cota)) / 2, y0 = m.t + (H - m.t - m.b - ph) / 2;
+        const x0 = COL ? m.l : k * (wE + gap) + m.l, pw = 3000 / s, ph = rng / s;
+        const zc = (Math.min(...t.cota) + Math.max(...t.cota)) / 2, y0 = COL ? k * (hE + gap) + m.t + (hE - m.t - 16 - ph) / 2 : m.t + (H - m.t - m.b - ph) / 2;
         const X = (d) => x0 + (d + 1500) / s, Y = (z) => y0 + (zc + rng / 2 - z) / s;
         el('path', { d: ruta(t.dist.map(X), t.cota.map(Y)) + `L${X(1500)},${y0 + ph}L${X(-1500)},${y0 + ph}Z`, fill: '#E9E4DA' }, svg);
         el('path', { d: ruta(t.dist.map(X), t.cota.map(Y)), fill: 'none', stroke: '#5E4F3D', 'stroke-width': 1.3 }, svg);
@@ -382,7 +387,7 @@
         zona.addEventListener('click', () => mapa.easeTo({ center: [t.lon[ic], t.lat[ic]], zoom: Math.max(mapa.getZoom(), 13), duration: 900 }));
       });
       el('text', { x: W / 2, y: H - 6, 'text-anchor': 'middle', 'font-size': 11, fill: C.texto2 }, svg,
-        'distancia al eje (negativa a la derecha del eje, como en la lámina 2/4); la misma escala en los dos ejes');
+        COL ? 'negativa a la derecha del eje; la misma escala en los dos ejes' : 'distancia al eje (negativa a la derecha del eje, como en la lámina 2/4); la misma escala en los dos ejes');
     }
 
     const qp = V.q.get('perfil');

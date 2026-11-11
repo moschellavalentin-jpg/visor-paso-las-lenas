@@ -23,7 +23,9 @@
         `<button data-a="sig" class="principal">${paso === R.length - 1 ? 'Terminar' : 'Siguiente →'}</button><button data-a="salir">Salir</button>` +
         `<div class="puntos">${R.map((r, j) => `<span data-j="${j}" class="${j === paso ? 'activo' : ''}" title="${r.titulo}"></span>`).join('')}</div></div>`;
       const izq = Math.min(tarjeta.offsetWidth + 36, mapa.getContainer().clientWidth * 0.45);
-      mapa.fitBounds([[p.caja[0], p.caja[1]], [p.caja[2], p.caja[3]]], { padding: { top: 40, bottom: 40, left: izq, right: 60 }, duration: 1800, maxZoom: 15 });
+      const pad = V.movil ? { top: 20, bottom: Math.min(tarjeta.offsetHeight + 30, mapa.getContainer().clientHeight * 0.55), left: 20, right: 20 }  // celular: tarjeta abajo
+        : { top: 40, bottom: 40, left: izq, right: 60 };
+      mapa.fitBounds([[p.caja[0], p.caja[1]], [p.caja[2], p.caja[3]]], { padding: pad, duration: 1800, maxZoom: 15 });
     }
     function salir() {
       if (antes) {

@@ -106,11 +106,12 @@
     const ref = document.createElement('section');
     ref.id = 'dron-ref';
     ref.hidden = true;
-    ref.innerHTML = '<h4>Referencias</h4>' + REFS.map(([s, t]) => `<div class="fila">${s}<span>${t}</span></div>`).join('');
+    ref.innerHTML = '<h4>Referencias<button class="plegar" title="Mostrar u ocultar">▾</button></h4>' + REFS.map(([s, t]) => `<div class="fila">${s}<span>${t}</span></div>`).join('');
+    ref.querySelector('.plegar').onclick = () => { ref.classList.toggle('plegada'); ref.querySelector('.plegar').textContent = ref.classList.contains('plegada') ? '▸' : '▾'; };
     document.getElementById('zona-mapa').appendChild(ref);
     // la esquina de la tablita: la de arriba a la derecha si el camino no pasa por ahí; si pasa, otra libre (abajo a la derecha o arriba a la izquierda).
     // Se mira dónde caen en la pantalla los próximos 25 km del camino y el objetivo de la parada; vuelve a su esquina después de 2 s libre.
-    const ESQ = ['ar-der', 'ab-der', 'ar-izq'];
+    const ESQ = V.movil ? ['ar-der', 'ar-izq'] : ['ar-der', 'ab-der', 'ar-izq'];  // en el celular, abajo va la tarjeta de la parada
     let esquina = 'ar-der', libreDesde = null, tapa = false;
     function margenes() {
       const v = document.body.classList.contains('modo-video');
@@ -260,9 +261,14 @@
       activo = true; jugando = false;
       boton.classList.add('activo');
       await V.cargarMDE();
-      V.ponerBase('sentinel');
-      mapa.setLayoutProperty('base-argenmap', 'visibility', 'visible');
-      mapa.setTerrain({ source: 'relieve', exaggeration: 1 });
+      V.ponerBase('sentinel', false);  // la imagen propia sola: cubre toda Mendoza y el horizonte se ve sin conexión
+      mapa.setTerrain({ source: V.movil ? 'relieve-movil' : 'relieve', exaggeration: 1 });
+      if (V.movil) {  // celular: 3D liviano (densidad 1, relieve hasta el zoom 10) y la tablita plegada, con su botón
+        reducido = true;
+        mapa.setPixelRatio(1);
+        ref.classList.add('plegada');
+        ref.querySelector('.plegar').textContent = '▸';
+      }
       try {
         mapa.setSky({ 'sky-color': '#8DB6E0', 'horizon-color': '#E6ECF2', 'fog-color': '#E6ECF2', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.7, 'fog-ground-blend': 0.75, 'atmosphere-blend': 0.6 });
       } catch (err) { /* sin cielo, el vuelo igual anda */ }

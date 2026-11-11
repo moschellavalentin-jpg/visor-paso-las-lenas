@@ -110,6 +110,15 @@ body.modo-video .maplibregl-ctrl-attrib { font-size: 13px; }
 #ir-km { display: flex; align-items: center; gap: 5px; color: #fff; font-size: 13px; border: 1px solid #E7C6EF; border-radius: 4px; padding: 2px 3px 2px 8px; margin: 0; }
 #ir-km input { width: 70px; font-size: 13px; padding: 3px 5px; border: 0; border-radius: 3px; }
 #cabecera #ir-km button { padding: 3px 9px; }
+#cabecera .b-ayuda { border-radius: 50%; width: 32px; height: 32px; padding: 0; font-weight: bold; font-size: 16px; flex: none; }
+.ayuda-fig { margin: 8px 0; }
+.ayuda-fig img { width: 100%; border: 1px solid var(--borde); }
+.ayuda-fig figcaption { font-size: 12px; color: var(--gris); }
+.ayuda-zonas li, .ayuda-herr li { margin: 3px 0; }
+.ayuda-zonas li::marker { color: var(--morado); font-weight: bold; }
+dl.glosario { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; }
+dl.glosario dt { font-weight: bold; color: var(--morado); }
+dl.glosario dd { margin: 0; }
 .ficha .aviso-km { color: #B45309; }
 #pie { font-size: 11px; color: var(--gris); padding: 4px 16px; border-top: 1px solid var(--borde); background: #fff; }
 .maplibregl-popup-content { font-family: Arial, sans-serif; font-size: 13px; max-width: 340px; padding: 12px 14px; }
@@ -134,4 +143,60 @@ body.modo-video .maplibregl-ctrl-attrib { font-size: 13px; }
 .modal th { background: var(--lila); }
 .modal img.grande { width: 100%; border-radius: 4px; }
 .aviso-mapa { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: #fff; border: 1px solid #E69500; padding: 6px 10px; border-radius: 4px; font-size: 12px; z-index: 5; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
-@media (max-width: 760px) { #panel { position: absolute; z-index: 4; height: calc(100% - 92px); } .tarjeta { width: calc(100% - 24px); } #cabecera h1 { font-size: 15px; } #cabecera p { display: none; } }
+/* el agua: escorrentía y anegamiento */
+#agua { max-height: calc(100% - 24px); overflow-y: auto; }
+#agua .rotulo { background: #FFF4E5; border-left: 3px solid #E69500; padding: 6px 8px; font-size: 12.5px; margin: 0 0 8px; line-height: 1.35; }
+#agua .opcion { display: block; margin: 6px 0 2px; cursor: pointer; }
+#agua .nota { font-size: 12px; color: var(--gris); margin: 2px 0 6px; line-height: 1.35; }
+#agua .niveles { display: flex; gap: 4px; margin: 4px 0; }
+#agua .niveles button { border: 1px solid #1565C0; background: #fff; color: #1565C0; border-radius: 4px; padding: 3px 10px; cursor: pointer; font-size: 13px; }
+#agua .niveles button.activo { background: #1565C0; color: #fff; }
+#agua .resumen-agua { margin: 8px 0 2px; font-size: 13px; }
+#agua .lista-agua { font-size: 12.5px; margin: 4px 0 6px; max-height: 260px; overflow-y: auto; line-height: 1.45; border-top: 1px solid var(--borde); }
+#agua .lista-agua h4 { margin: 8px 0 0; font-size: 13px; color: #1565C0; }
+#agua .lista-agua ul { list-style: none; margin: 2px 0 4px; padding: 0; }
+#agua .lista-agua li { margin: 3px 0; }
+#agua .lista-agua .largo { color: var(--gris); font-size: 11.5px; }
+#agua .sin, #agua li.sin { color: #B3261E; }
+#agua .lista-agua .km { border: 1px solid var(--borde); background: #fff; border-radius: 3px; padding: 1px 6px; margin: 1px 2px 0 0; font-size: 12px; cursor: pointer; }
+#dron-ref .plegar { border: 0; background: transparent; color: var(--morado); cursor: pointer; font-size: 14px; padding: 0 0 0 6px; }
+#dron-ref.plegada .fila { display: none; }
+.solo-movil { display: none; }
+
+/* celular: menú en un botón, panel de capas como cajón, tarjetas abajo a todo el ancho, perfiles a media pantalla */
+@media (max-width: 760px) {
+  .solo-movil { display: inline-block; }
+  #cabecera { padding: 6px 10px; position: relative; }
+  #cabecera h1 { font-size: 15px; }
+  #cabecera p { display: none; }
+  #cabecera .b-ayuda { order: 1; margin-left: auto; }
+  #b-menu { order: 2; }
+  #b-menu { background: transparent; color: #fff; border: 1px solid #E7C6EF; border-radius: 4px; padding: 7px 11px; font-size: 14px; flex: none; cursor: pointer; }
+  #cabecera nav { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 30; background: var(--oscuro); flex-direction: column; flex-wrap: nowrap;
+    padding: 8px 10px 12px; gap: 6px; box-shadow: 0 6px 14px rgba(0, 0, 0, .35); }
+  #cabecera nav.abierto { display: flex; }
+  #cabecera nav button { width: 100%; text-align: left; font-size: 15px; padding: 10px 12px; }
+  #ir-km { width: 100%; padding: 4px 6px 4px 12px; font-size: 15px; }
+  #ir-km input { flex: 1; font-size: 15px; padding: 6px; }
+  #cabecera #ir-km button { width: auto; padding: 6px 14px; }
+  main { position: relative; }
+  #panel { position: absolute; z-index: 6; left: 0; top: 0; bottom: 0; width: min(86vw, 340px); box-shadow: 2px 0 12px rgba(0, 0, 0, .3); }
+  .cerrar-panel { position: sticky; top: 0; float: right; border: 0; background: #fff; font-size: 28px; line-height: 1; color: var(--gris); padding: 4px 8px; z-index: 2; cursor: pointer; }
+  #perfiles { height: 50vh; }
+  .p-cabecera { flex-wrap: wrap; gap: 6px; padding: 6px 8px 0; }
+  #p-nota { display: none; }
+  .pestanas button { padding: 5px 8px; font-size: 12.5px; }
+  #p-acciones button { padding: 4px 8px; font-size: 12px; }
+  .tarjeta { left: 8px; right: 8px; width: auto; top: auto; bottom: 26px; max-height: 52vh; overflow-y: auto; padding: 10px 12px; font-size: 13px; }
+  .tarjeta h3 { font-size: 16px; }
+  #agua { max-height: 50vh; }  /* abajo, sin tapar el mapa entero */
+  #agua .lista-agua { max-height: none; }
+  #dron { left: 8px; right: 8px; width: auto; bottom: 30px; padding: 8px 12px; font-size: 13px; max-height: 40vh; overflow-y: auto; }
+  #dron h3 { font-size: 16px; }
+  #dron-km { top: 8px; left: 8px; font-size: 14px; }
+  #dron-ref { max-width: calc(100% - 64px); padding: 6px 10px 4px; }
+  .modal .caja { padding: 14px 14px; font-size: 13.5px; width: 96vw; max-height: 88vh; }
+  .modal table { font-size: 11.5px; }
+  .maplibregl-ctrl-attrib { font-size: 9px; }
+  #pie { font-size: 9.5px; padding: 3px 8px; }
+}

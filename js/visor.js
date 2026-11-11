@@ -24,12 +24,14 @@
     return;
   }
   const T = cfg.textos;
-  const MOR = '#8B169B', GRIS = '#8F8F8F', GRIS_C = '#D9D9D9';  // lo descartado, en gris (como en la lámina 4/4)
+  const MOR = '#8B169B', GRIS = '#8F8F8F', GRIS_C = '#D9D9D9';
+  const MOVIL = window.matchMedia('(max-width: 760px)').matches;  // celular: menú en un botón, paneles plegables, 3D liviano  // lo descartado, en gris (como en la lámina 4/4)
   const FONDO = { argenmap: '#FFF5EA', otro: '#F3F1EC' };  // el fondo de Argenmap: si faltara una tesela, no queda un rectángulo de otro color
   const F = { r: ['Open Sans Regular'], b: ['Open Sans Bold'], i: ['Open Sans Italic'] };
   const HALO = { 'text-halo-color': '#ffffff', 'text-halo-width': 1.6 };
   const Z2 = cfg.textos.niveles[1].desde, Z3 = cfg.textos.niveles[2].desde, Z4 = cfg.textos.niveles[3].desde;
   const ancho = (a, b) => ['interpolate', ['linear'], ['zoom'], 8, a, 15, b];
+  const ANCHO_AGUA = ['interpolate', ['linear'], ['ln', ['max', ['get', 'valor'], 0.1]], -1, 1.3, 2, 2.6, 7, 6];  // por el área de aporte (km²)
   const rot = (tam, color, fuente, extra) => Object.assign({ type: 'symbol', layout: { 'text-field': ['get', 'etiqueta'], 'text-font': fuente || F.b, 'text-size': tam, 'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-optional': true }, paint: Object.assign({ 'text-color': color || MOR }, HALO) }, extra || {});
 
   // estilo de cada capa del catalogo: lista de capas de MapLibre (id y source se completan abajo)
@@ -66,6 +68,10 @@
         paint: Object.assign({ 'text-color': '#6E6E6E' }, HALO) },
       { type: 'symbol', filter: ['!=', ['geometry-type'], 'LineString'], layout: { 'text-field': ['get', 'etiqueta'], 'text-font': F.i, 'text-size': 12, 'text-offset': [0, 1.1], 'text-anchor': 'top' },
         paint: Object.assign({ 'text-color': '#6E6E6E' }, HALO) }],
+    escorrentia: [{ type: 'line', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': '#1E88E5', 'line-opacity': 0.4, 'line-width': ANCHO_AGUA } },
+      { type: 'line', paint: { 'line-color': '#E1F5FE', 'line-width': ANCHO_AGUA, 'line-dasharray': [0, 4, 3] } }],
+    anegamiento: [{ type: 'fill', paint: { 'fill-color': ['interpolate', ['linear'], ['get', 'valor'], 0.5, '#0D47A1', 1, '#1565C0', 2, '#1E88E5', 3, '#64B5F6'],
+      'fill-opacity': 0.55 } }],
     tramos_rio: [{ type: 'line', maxzoom: Z3, paint: { 'line-color': '#2F6EB5', 'line-width': 12, 'line-opacity': 0.35 } },
       { type: 'line', minzoom: Z3, paint: { 'line-color': '#2F6EB5', 'line-width': 3, 'line-dasharray': [1, 1] } },
       { type: 'symbol', minzoom: Z3, layout: { 'symbol-placement': 'line', 'text-field': 'defensa de margen', 'text-font': F.i, 'text-size': 11 }, paint: Object.assign({ 'text-color': '#2F6EB5' }, HALO) }],
@@ -100,7 +106,7 @@
       rot(11, MOR, F.b, { filter: ['==', ['get', 'cada'], 10] }), rot(11, MOR, F.b, { minzoom: Z2, filter: ['==', ['get', 'cada'], 5] }),
       rot(10, MOR, F.r, { minzoom: Z3, filter: ['==', ['get', 'cada'], 1] })],
   };
-  const ORDEN = ['reserva', 'glaciares', 'laguna', 'lecho', 'drenaje', 'cd01', 'afectacion', 'zona_camino', 'amortiguacion', 'urbana', 'parcelas', 'rios', 'lim_internacional',
+  const ORDEN = ['reserva', 'glaciares', 'laguna', 'lecho', 'anegamiento', 'drenaje', 'cd01', 'afectacion', 'zona_camino', 'amortiguacion', 'urbana', 'parcelas', 'rios', 'escorrentia', 'lim_internacional',
     'lim_depto', 'zsf', 'rutas', 'senda', 'transversales', 'descartados', 'tramos_rio', 'nieve', 'tronco', 'desvio', 'doble_calzada', 'tunel', 'viaducto', 'puentes_largo', 'puentes', 'obras', 'pasos',
     'rotondas', 'b3_huella', 'peaje', 'carriles', 'p6', 'servicios', 'puestos', 'apartaderos', 'b3_punto', 'portal', 'sitios', 'km'];
   const CAT = Object.fromEntries(cfg.capas.map((c) => [c.id, c]));
@@ -110,15 +116,21 @@
   // ---- estilo de MapLibre
   const style = { version: 8, glyphs: BASE + 'datos/glifos/{fontstack}/{range}.pbf', sources: {}, layers: [] };
   const zona = cfg.zona;
+  // cada base propia tiene dos capas: toda Mendoza (hasta el zoom 11) y, encima, la zona del corredor (10 m / 30 m) con el borde fundido
   cfg.bases.forEach((b) => {
-    style.sources['base-' + b.id] = Object.assign({ type: 'raster', tiles: [abs(b.teselas)], tileSize: 256, scheme: b.esquema, maxzoom: b.maxzoom, attribution: b.atribucion },
-      b.requiere_conexion ? {} : { bounds: zona, minzoom: 9 });
-    style.layers.push({ id: 'base-' + b.id, type: 'raster', source: 'base-' + b.id, layout: { visibility: b.id === BASE_INICIAL ? 'visible' : 'none' } });
+    const capas = b.capas || [{ teselas: b.teselas, maxzoom: b.maxzoom }];
+    b.ids = capas.map((_, i) => (b.capas ? `base-${b.id}-${i}` : `base-${b.id}`));
+    capas.forEach((c, i) => {
+      style.sources[b.ids[i]] = Object.assign({ type: 'raster', tiles: [abs(c.teselas)], tileSize: 256, scheme: b.esquema, maxzoom: c.maxzoom, attribution: b.atribucion },
+        c.minzoom != null ? { minzoom: c.minzoom } : {}, c.bounds ? { bounds: c.bounds } : {});
+      style.layers.push({ id: b.ids[i], type: 'raster', source: b.ids[i], layout: { visibility: (b.id === BASE_INICIAL || b.id === 'argenmap') ? 'visible' : 'none' } });
+    });
   });
   const RL = cfg.relieve;  // relieve para el 3D (solo se usa en el vuelo)
   style.sources.relieve = { type: 'raster-dem', tiles: [abs(RL.teselas)], tileSize: 256, encoding: RL.codificacion, minzoom: RL.minzoom, maxzoom: RL.maxzoom,
     bounds: RL.bounds, attribution: RL.atribucion };
-  style.layers.unshift({ id: 'fondo', type: 'background', paint: { 'background-color': BASE_INICIAL === 'argenmap' ? FONDO.argenmap : FONDO.otro } });
+  style.sources['relieve-movil'] = Object.assign({}, style.sources.relieve, { maxzoom: RL.maxzoom_movil });  // 3D liviano en el celular: el relieve hasta el zoom 10
+  style.layers.unshift({ id: 'fondo', type: 'background', paint: { 'background-color': FONDO.argenmap } });
   const SUB = {};
   const simbolos = [];
   ORDEN.filter((id) => CAT[id]).forEach((id) => {
@@ -155,14 +167,17 @@
     l.innerHTML = `<input type="radio" name="base" value="${b.id}" ${b.id === BASE_INICIAL ? 'checked' : ''}> ${b.titulo}`;
     contBases.appendChild(l);
   });
-  function ponerBase(id) {
+  // las bases propias van sobre Argenmap: fuera del mosaico (y en su borde fundido) se ve Argenmap, no un gris. El vuelo 3D pide la imagen sola
+  // (conArgenmap = false): el mosaico de Mendoza cubre todo su horizonte y así anda sin conexión
+  function ponerBase(id, conArgenmap = true) {
     baseActual = id;
-    cfg.bases.forEach((b) => mapa.setLayoutProperty('base-' + b.id, 'visibility', b.id === id ? 'visible' : 'none'));
-    mapa.setPaintProperty('fondo', 'background-color', id === 'argenmap' ? FONDO.argenmap : FONDO.otro);
+    const fondoIGN = id === 'argenmap' || conArgenmap;
+    cfg.bases.forEach((b) => b.ids.forEach((l) => mapa.setLayoutProperty(l, 'visibility', (b.id === id || (b.id === 'argenmap' && fondoIGN)) ? 'visible' : 'none')));
+    mapa.setPaintProperty('fondo', 'background-color', fondoIGN ? FONDO.argenmap : FONDO.otro);
     contBases.querySelector(`input[value="${id}"]`).checked = true;
   }
   function avisoBase(txt) {
-    ponerBase('sentinel');
+    ponerBase('sentinel', false);  // Argenmap no responde: la imagen propia sola
     const a = document.getElementById('aviso-base');
     a.textContent = txt;
     a.hidden = false;
@@ -189,6 +204,7 @@
     const blanco = (c) => /^#f{3}(f{3})?$/i.test(c);
     const colorDe = (x) => { const p = x.paint || {}; return [p['fill-color'], p['line-color'], p['circle-color'], p['circle-stroke-color'], p['text-color']].map(primero).find((v) => v && !blanco(v)); };
     if (id === 'nieve') return 'background: linear-gradient(90deg, #DCEBFA, #8EC1EE, #3F86D0, #123A7A)';
+    if (id === 'anegamiento') return 'background: linear-gradient(90deg, #0D47A1, #1E88E5, #64B5F6); opacity: .8';
     if (id === 'descartados') return `background: linear-gradient(90deg, ${GRIS} 0 45%, transparent 45% 55%, ${GRIS} 55%); height: 4px`;
     const dib = E[id].filter((x) => x.type !== 'symbol');
     const s = dib.find(colorDe) || dib[0] || E[id][0];
@@ -262,7 +278,7 @@
       html += `<p class="epigrafe">${T.epigrafe_foto}</p>`;
     }
     html += `<p class="fuente">Fuente: ${p.fuente}</p></div>`;
-    new maplibregl.Popup({ maxWidth: '360px' }).setLngLat(e.lngLat).setHTML(html).addTo(mapa);
+    new maplibregl.Popup({ maxWidth: MOVIL ? '290px' : '360px' }).setLngLat(e.lngLat).setHTML(html).addTo(mapa);
   });
   document.getElementById('mapa').addEventListener('click', (e) => {
     const n = e.target.dataset && e.target.dataset.foto;
@@ -305,19 +321,34 @@
     mapa.fitBounds([[v.caja[0], v.caja[1]], [v.caja[2], v.caja[3]]], { padding: 50, duration: 1400, maxZoom: 15 });
   });
   document.getElementById('b-acerca').onclick = () => abrirModal(`<h2>Acerca de</h2><p>${T.acerca}</p><p>${T.pie}</p>`);
+  // ---- ayuda «Cómo usar» y glosario: el mismo texto que la ficha A4 «Cómo usar el visor» (scripts/e07_18_ayuda.py)
+  const negrita = (s) => s.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+  document.getElementById('b-ayuda').onclick = () => {
+    const A = T.ayuda;
+    abrirModal(`<h2>${A.titulo}</h2><p>${A.que_es}</p>` +
+      (A.imagen ? `<figure class="ayuda-fig"><img src="${abs(A.imagen)}" alt="El visor con sus partes numeradas"><figcaption>El visor en la computadora, con sus partes numeradas.</figcaption></figure>` : '') +
+      `<ol class="ayuda-zonas">${A.zonas_txt.map((z) => `<li>${negrita(z)}</li>`).join('')}</ol>` +
+      `<h3>Las herramientas</h3><ul class="ayuda-herr">${A.herramientas.map((h) => `<li>${negrita(h)}</li>`).join('')}</ul>` +
+      `<h3>Glosario</h3><dl class="glosario">${A.glosario.map(([t, d]) => `<dt>${t}</dt><dd>${d}</dd>`).join('')}</dl>`);
+  };
+  // ---- menú «Informe»: el informe y las cuatro láminas en PDF, para bajar
+  document.getElementById('b-informe').onclick = () => abrirModal('<h2>Informe y láminas</h2><p>Los documentos del trabajo, en PDF, los mismos de la entrega. ' +
+    'Las láminas son grandes: para imprimirlas, a tamaño real, sin ajustar a la página.</p><table><tr><th>Documento</th><th>Hoja</th><th>Peso</th><th></th></tr>' +
+    cfg.informe.map((d) => `<tr><td>${d.titulo}</td><td>${d.hoja}</td><td>${Number(d.mb).toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} MB</td><td><a href="${abs(d.archivo)}" download>PDF</a> · ` +
+      `<a href="${abs(d.archivo)}" target="_blank" rel="noopener">abrir</a></td></tr>`).join('') + '</table>');
   document.getElementById('b-panel').onclick = (e) => {
     document.getElementById('panel').classList.toggle('oculto');
     e.target.classList.toggle('activo');
     setTimeout(() => mapa.resize(), 50);
   };
-  // ?base=sentinel|sombreado elige el mapa base; ?abrir=nosesabe|descargas|acerca abre esa ventana al cargar
+  // ?base=sentinel|sombreado elige el mapa base; ?abrir=nosesabe|descargas|acerca|como|ayuda|informe abre esa ventana al cargar
   // (perfiles.js lee ?perfil=longitudinal|transversales y recorrido.js, ?paso=1..8 y ?km=)
-  const bq = { nosesabe: 'b-nosesabe', descargas: 'b-descargas', acerca: 'b-acerca', como: 'b-como' }[q.get('abrir')];
+  const bq = { nosesabe: 'b-nosesabe', descargas: 'b-descargas', acerca: 'b-acerca', como: 'b-como', ayuda: 'b-ayuda', informe: 'b-informe' }[q.get('abrir')];
   if (bq) document.getElementById(bq).click();
 
   // ---- lo que comparten los perfiles, el recorrido e ir al km: la marca en el mapa y el acceso a capas y bases
   const nf = (v, d = 0) => Number(v).toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d });
-  const API = { mapa, cfg, P, T, abs, MOR, F, HALO, nf, q, ponerBase, base: () => baseActual, mostrarCapa, capaVisible, listo: false, ocupado: false };
+  const API = { mapa, cfg, P, T, abs, MOR, F, HALO, nf, q, ponerBase, base: () => baseActual, mostrarCapa, capaVisible, listo: false, ocupado: false, movil: MOVIL };
   // el MDE de 60 m (perfil dibujado y altura del dron): se baja una sola vez, cuando hace falta
   let mdeP = null, M = null;
   API.cargarMDE = () => (mdeP = mdeP || fetch(abs(cfg.mde.archivo)).then((r) => r.arrayBuffer()).then((b) => { M = new Uint16Array(b); return M; }));
@@ -341,6 +372,13 @@
     if (s) s.setData(lon == null ? { type: 'FeatureCollection', features: [] } : { type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] }, properties: { texto: texto || '' } });
   };
   window.visorAPI = API;
+  // ---- celular: el menú en un botón (se cierra al elegir) y el panel de capas plegado al abrir
+  const nav = document.querySelector('#cabecera nav');
+  document.getElementById('b-menu').onclick = () => nav.classList.toggle('abierto');
+  nav.addEventListener('click', (e) => { if (MOVIL && e.target.tagName === 'BUTTON' && !e.target.closest('#ir-km')) nav.classList.remove('abierto'); });
+  document.getElementById('ir-km').addEventListener('submit', () => { if (MOVIL) nav.classList.remove('abierto'); });
+  document.getElementById('panel-cerrar').onclick = () => API.panel(false);
+  if (MOVIL) API.panel(false);
   window.visor = mapa;  // para las pruebas
   mapa.once('load', () => {
     mapa.addSource('marca', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });

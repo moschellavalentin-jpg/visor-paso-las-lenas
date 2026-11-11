@@ -13,22 +13,27 @@
     <h1 id="titulo">Acceso argentino al paso Las Leñas</h1>
     <p id="subtitulo">Visor de la propuesta: de El Sosneado al portal N4</p>
   </div>
+  <button id="b-menu" class="solo-movil" aria-label="Menú">☰ Menú</button>
   <nav>
     <button id="b-panel" class="activo" title="Mostrar u ocultar las capas">Capas</button>
     <button id="b-perfiles" title="Perfil longitudinal y perfiles transversales">Perfiles</button>
     <button id="b-recorrido" title="La propuesta en ocho pasos">Recorrido guiado</button>
     <button id="b-vuelo" title="Vuelo 3D sobre el camino, con paradas">Vuelo 3D</button>
+    <button id="b-agua" title="Escorrentía y anegamiento: escenario indicativo">Agua</button>
     <form id="ir-km" title="Ir a un kilómetro del tronco, contado desde El Sosneado">
       <label for="km">Ir al km</label><input id="km" type="text" inputmode="decimal" placeholder="0 a 77,5" autocomplete="off"><button type="submit">Ir</button>
     </form>
     <button id="b-nosesabe">Lo que no se sabe</button>
     <button id="b-como" title="Los métodos, los datos y las herramientas">Cómo se hizo</button>
     <button id="b-descargas">Descargas</button>
+    <button id="b-informe" title="El informe y las cuatro láminas, en PDF">Informe</button>
     <button id="b-acerca">Acerca de</button>
   </nav>
+  <button id="b-ayuda" class="b-ayuda" title="Cómo usar el visor, con un glosario" aria-label="Ayuda: cómo usar el visor">?</button>
 </header>
 <main>
   <aside id="panel">
+    <button id="panel-cerrar" class="solo-movil cerrar-panel" aria-label="Cerrar las capas">×</button>
     <section>
       <h2>Escala y detalle</h2>
       <p id="escala" class="escala">—</p>
@@ -49,6 +54,7 @@
     <div id="mapa"></div>
     <section id="recorrido" class="tarjeta" hidden></section>
     <section id="dron" hidden></section>
+    <section id="agua" class="tarjeta" hidden></section>
     <div id="dron-km" hidden></div>
     <section id="perfiles" hidden>
       <div class="p-cabecera">
@@ -76,5 +82,6 @@
 <script src="js/perfiles.js"></script>
 <script src="js/recorrido.js"></script>
 <script src="js/dron.js"></script>
+<script src="js/agua.js"></script>
 </body>
 </html>
