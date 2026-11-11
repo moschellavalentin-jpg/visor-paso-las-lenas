@@ -1,0 +1,1071 @@
+{
+ "textos": {
+  "titulo": "Acceso argentino al paso Las Leñas",
+  "subtitulo": "Visor de la propuesta: de El Sosneado al portal N4",
+  "pie": "Versión 0.3 (muestra) · 11/11/2026 · Trabajo académico: no es cartografía oficial. Luca Valentín Moschella · Cartografía Aplicada · UMaza",
+  "epigrafe_foto": "Laguna El Sosneado, diciembre de 2025. Foto: L. V. Moschella.",
+  "fotos": [
+   "laguna_1.jpg",
+   "laguna_2.jpg",
+   "laguna_3.jpg",
+   "laguna_4.jpg"
+  ],
+  "niveles": [
+   {
+    "desde": 0,
+    "nombre": "Corredor (≈ 1:500.000)",
+    "texto": "Tronco, túnel, Reserva, glaciares, puentes, viaducto y tramos junto al río."
+   },
+   {
+    "desde": 11,
+    "nombre": "Tramo (≈ 1:100.000)",
+    "texto": "Se suman los kilómetros, el desvío, B-3, P-6, las rutas, los sitios y los límites."
+   },
+   {
+    "desde": 13,
+    "nombre": "Detalle (≈ 1:25.000)",
+    "texto": "Se suman las obras por tipo, las rotondas, la senda, los pasos de hacienda y la zona de camino."
+   },
+   {
+    "desde": 14.5,
+    "nombre": "Obra (≈ 1:10.000)",
+    "texto": "Se suman las parcelas afectadas, la plaza de peaje, los carriles y la huella de B-3."
+   }
+  ],
+  "no_se_sabe": [
+   [
+    "El terreno exacto",
+    "El modelo de elevación es de superficie, de 30 m: en las laderas y donde hay nieve o vegetación, la cota puede no ser la del suelo."
+   ],
+   [
+    "La hidrología de los cauces",
+    "Para cada cruce se calculó el área de aporte, que describe el relieve: no es caudal. Dimensionar las obras requiere el estudio hidrológico."
+   ],
+   [
+    "Los aludes",
+    "No hay datos de aludes en el corredor."
+   ],
+   [
+    "La nieve acumulada",
+    "No se estimaron la acumulación ni el espesor de la nieve."
+   ],
+   [
+    "El glaciar Fiero",
+    "No se midió el espesor de hielo del glaciar Fiero sobre el túnel."
+   ],
+   [
+    "El dominio de la tierra",
+    "No se conoce el dominio de la tierra sin parcela registrada, que puede estar ocupada por puesteros (Ley 6.086)."
+   ],
+   [
+    "El ancho legal de la RP 220",
+    "No se pudo saber: el dato no está disponible, y de él depende la mayor parte de la superficie a afectar."
+   ],
+   [
+    "La categoría del camino",
+    "La carretera para 70 km/h es una decisión propuesta; la categoría oficial la definiría Vialidad."
+   ],
+   [
+    "El portal definitivo",
+    "Si el estudio del túnel eligiera N1, cambiarían los últimos kilómetros del acceso."
+   ]
+  ],
+  "perfiles": {
+   "longitudinal": "Perfil del tronco, de El Sosneado (km 0) al portal N4, y del túnel hasta el portal chileno, sobre el modelo de elevación de 30 m. La rasante se dibuja donde se calculó: la rectificación RV-01, la curva de las termas y el tramo final. Abajo, la pendiente del terreno frente a la máxima de la norma (DNV, 2010): carretera para 70 km/h fuera de la Reserva y para 50 km/h dentro. Escala vertical exagerada.",
+   "transversales": "Tres perfiles transversales de 3 km, 1,5 km a cada lado del eje, sin exageración vertical: la misma escala en los dos ejes.",
+   "dibujado": "Perfil del terreno a lo largo de la línea que se dibuja en el mapa, leído en el navegador del modelo de elevación de 30 m llevado a 60 m. Es el terreno, no un camino: la pendiente es la del suelo, medida en tramos de 300 m. Clic para marcar puntos; doble clic o Terminar para cerrar."
+  },
+  "acerca": "Visor del trabajo final de Cartografía Aplicada (UMaza). Muestra la propuesta de acceso argentino al paso Las Leñas con el detalle que corresponde a cada escala, como en las láminas. Los datos se prepararon con QGIS, GRASS y Python, con la asistencia de un agente de IA, bajo dirección y revisión del autor.",
+  "como": [
+   {
+    "titulo": "El agua: el lecho activo, la red de drenaje y el río",
+    "parrafos": [
+     "El lecho activo del Atuel se mapeó con imágenes Sentinel-2 L2A de tres veranos —04/02/2024, 08/02/2025 y 23/02/2026—, con las bandas verde e infrarroja cercana, de 10 m. Con reglas fijadas antes de medir, se tomó como agua visible el índice de agua (NDWI) mayor que 0 en al menos dos de las tres fechas, y como lecho activo los píxeles con agua en alguna fecha, ensanchados 60 m para unir los brazos de un lecho trenzado y limitados a terreno de menos de 5 % de pendiente, sin vegetación (NDVI máximo menor que 0,20) y a menos de 250 m de un cauce de la red derivada; se descartaron las manchas de menos de 1 ha.",
+     "Para saber si el río se acerca a la ruta, se comparó el agua visible junto al eje en el tramo más largo junto al río en los tres veranos: el agua queda siempre del mismo lado y ningún punto del eje cae sobre ella; las distancias mínimas fueron de 29, 17 y 17 m.",
+     "La red de drenaje se derivó del modelo de elevación con GRASS —r.watershed, con flujo múltiple— sobre el modelo original, con tres umbrales de área. Se adoptó el de 10.000 celdas (9 km²): da una densidad de 0,244 km/km², casi la de la red oficial, de 0,225 km/km². La coincidencia con la hidrografía oficial es baja con los tres umbrales —39,0 % con el adoptado— y no se ajustaron los umbrales para mejorarla.",
+     "El río de OpenStreetMap no se usó como capa de referencia por el criterio fijado al armar la base: primero la fuente oficial, después la completitud. OpenStreetMap es un dato colaborativo, no oficial, y quedó como alternativa; para la hidrografía, la referencia es la de la IDE Mendoza. La posición del río, además, se tomó de las imágenes y no de ninguna línea: contados sobre las líneas, los cruces daban 28 puentes, y sobre la imagen se vio que en los tramos junto al río el lecho no cruza el eje. No está registrada una comparación propia de la línea de OpenStreetMap con la imagen."
+    ],
+    "items": [
+     {
+      "titulo": "El lecho activo junto al río",
+      "texto": "Sobre la imagen Sentinel-2 propia, en el tramo junto al río más largo.",
+      "ver": {
+       "caja": [
+        -69.97593,
+        -34.83854,
+        -69.93283,
+        -34.81924
+       ],
+       "base": "sentinel",
+       "capas": [
+        "lecho"
+       ]
+      }
+     },
+     {
+      "titulo": "La red de drenaje derivada",
+      "texto": "La red del umbral adoptado, que se enciende en el mapa.",
+      "ver": {
+       "caja": [
+        -70.16157,
+        -35.0995,
+        -69.56445,
+        -34.59359
+       ],
+       "capas": [
+        "drenaje"
+       ]
+      }
+     }
+    ],
+    "fuente": "Fuente: informe, 3.3, 4.2, 5.2 y 5.5; registro de fuentes y scripts del proyecto."
+   },
+   {
+    "titulo": "La traza, tramo por tramo",
+    "parrafos": [
+     "La traza propuesta se comparó con el eje de la RP 220 cada 100 m: hasta el km 66,8 no se aleja más de 50 m del eje actual, salvo en ajustes cortos de curva. Los kilómetros se cuentan desde la rotonda R2, al noroeste de El Sosneado."
+    ],
+    "items": [
+     {
+      "titulo": "Antes del km 0: el desvío de El Sosneado",
+      "texto": "Dos ramas que llegan a la rotonda R2: la norte, de 4,05 km, por encima de la loma y a 334 m del área urbana, y la oeste, de 1,44 km; entre las dos, 5,5 km. La opción al pie de la loma pasaba a 30 m del pueblo y se descartó. El tránsito pesado por el pueblo pasa de 1,86 km por camión a ninguno.",
+      "ver": {
+       "caja": [
+        -69.60313,
+        -35.08825,
+        -69.55487,
+        -35.0662
+       ],
+       "capas": [
+        "descartados"
+       ]
+      }
+     },
+     {
+      "titulo": "Del km 0 al 66,8: la RP 220 existente, mejorada",
+      "texto": "Se lleva al perfil de la carretera para 70 km/h (DNV, 2010): un coronamiento de 10,7 m en una zona de camino de 100 m. Se corrigen tres quiebres de la alineación, en los km 21, 26 y 28, dentro de la faja actual: no se abre un camino nuevo, se mejora el que hay.",
+      "ver": {
+       "caja": [
+        -70.1102,
+        -35.08599,
+        -69.58089,
+        -34.69393
+       ]
+      }
+     },
+     {
+      "titulo": "Km 34,2 a 35,1: peaje y complejo B-3, fuera de la Reserva",
+      "texto": "La Reserva empieza en el km 37,1. La Ley 6045 (art. 40) prohíbe en las reservas hídricas las acciones que alteren el ecosistema y el agua: con el complejo afuera, dentro quedan 2,25 ha de instalaciones menores en lugar de un predio de 20 ha.",
+      "ver": {
+       "caja": [
+        -69.87534,
+        -34.88405,
+        -69.85519,
+        -34.86504
+       ]
+      }
+     },
+     {
+      "titulo": "Km 37,8 a 40,8: la rectificación RV-01",
+      "texto": "La única rectificación de la RP 220: corrige curvas cerradas sin salir de la faja del camino actual, donde la categoría baja a 50 km/h porque el valle se angosta. Mueve unos 2.500 m³ de corte y 2.100 m³ de relleno.",
+      "ver": {
+       "caja": [
+        -69.9184,
+        -34.87052,
+        -69.88863,
+        -34.84682
+       ]
+      }
+     },
+     {
+      "titulo": "Km 44,2 a 46,9: junto al río Atuel",
+      "texto": "En tres tramos el camino corre junto al río sin cruzarlo; este es el más largo, frente a un área de aporte de hasta 916 km². No van puentes: el terraplén se eleva y se protege con una defensa de margen del lado del río.",
+      "ver": {
+       "caja": [
+        -69.97593,
+        -34.83854,
+        -69.93283,
+        -34.81924
+       ],
+       "base": "sentinel",
+       "capas": [
+        "lecho"
+       ]
+      }
+     },
+     {
+      "titulo": "Km 60,8 a 61,8: la curva de las termas",
+      "texto": "Una curva cerrada que no se puede corregir sin salir de la faja actual: por ahora se ajusta solo la rasante; la alineación se rectificaría en el proyecto.",
+      "ver": {
+       "caja": [
+        -70.08619,
+        -34.75722,
+        -70.0701,
+        -34.74392
+       ]
+      }
+     },
+     {
+      "titulo": "Km 66,9 a 77,5: el tramo final al portal N4",
+      "texto": "Desde el km 66,9, una traza nueva por el pie de la ladera, con un radio mínimo de 175 m. Cruza un cauce sin nombre, no el Atuel, con un viaducto de 621 m (km 76,9 a 77,5), elegido frente a un terraplén con defensa porque ocupa 180 m² de cauce en lugar de 3.058 m²; los últimos 333 m son de doble calzada.",
+      "ver": {
+       "caja": [
+        -70.13541,
+        -34.71198,
+        -70.08448,
+        -34.61521
+       ],
+       "base": "sentinel"
+      }
+     }
+    ],
+    "fuente": "Fuente: informe, 7.1, 7.3 y 7.4."
+   },
+   {
+    "titulo": "La afectación de tierras",
+    "parrafos": [
+     "La franja es la zona de camino de 100 m, 50 m a cada lado del eje, que fija la norma vial (DNV, 2010). Es un criterio de proyecto, no una zona legal vigente: el ancho legal actual de la RP 220 no está disponible.",
+     "La franja se cruzó con el parcelario de la IDE Mendoza parcela por parcela, por su nomenclatura y sin titulares; una parcela cuenta como afectada si la superposición supera el simple contacto de borde, 0,001 ha. Quedan 8 parcelas afectadas.",
+     "Por qué se dan rangos: el 94,1 % de la superficie no tiene parcela registrada en el catastro consultado, y eso no significa tierra fiscal: puede estar ocupada por puesteros (Ley 6.086). Por eso cada superficie va entre lo que cae en parcelas y el total: la superficie nueva que ocupa la propuesta, de 7,3 a 183,5 ha, y la afectación total, con el ensanche eventual de la RP 220 y los predios, de 53,7 a 905,3 ha. No es una expropiación: falta la ley que declare la utilidad pública, la mensura y la tasación.",
+     "Qué falta saber: el ancho legal actual de la RP 220 —el ensanche a 100 m es la mayor parte de la superficie y solo correspondería si ese ancho es menor— y el dominio de la tierra sin parcela registrada."
+    ],
+    "items": [
+     {
+      "titulo": "Las parcelas afectadas",
+      "texto": "Con su nomenclatura, superficie y porcentaje afectado, sin titulares.",
+      "ver": {
+       "caja": [
+        -70.08246,
+        -35.09034,
+        -69.58764,
+        -34.74256
+       ],
+       "capas": [
+        "parcelas"
+       ]
+      }
+     },
+     {
+      "titulo": "La superficie afectada",
+      "texto": "Las tres partes: el ensanche eventual de la RP 220, la superficie nueva y los predios con la senda.",
+      "ver": {
+       "caja": [
+        -70.14522,
+        -35.08599,
+        -69.58089,
+        -34.6071
+       ],
+       "capas": [
+        "afectacion"
+       ]
+      }
+     }
+    ],
+    "fuente": "Fuente: informe, 4.5, 5.3 y 7.5; tabla de afectación del proyecto."
+   },
+   {
+    "titulo": "Datos y herramientas",
+    "parrafos": [
+     "El modelo de elevación es el Copernicus GLO-30, de 30 m: un modelo de superficie, con exactitud vertical declarada mejor que 4 m, que se eligió porque el modelo del IGN no se pudo descargar. Se controló con 15 puntos de nivelación del IGN: sin el punto que difiere −39,6 m, el error medio cuadrático es de 1,11 m.",
+     "Las imágenes son Sentinel-2 L2A, de 10 m: tres veranos para el agua y 49 fechas de invierno, de 2019 a 2025, para la nieve. La cartografía de base es del IGN y de la IDE Mendoza; los glaciares, del Inventario Nacional de Glaciares (IANIGLA); el límite de la Reserva se armó con las coordenadas de la Ley 8516; el clima, de los reanálisis ERA5; el túnel y los costos, de los estudios del MOP de Chile (MOP, 2015). OpenStreetMap se usó como dato colaborativo. Cada archivo está en el registro de fuentes, con su organismo, su enlace y su fecha.",
+     "Los análisis se hicieron con QGIS 3.44, GRASS 8.4 y GDAL, con scripts de Python registrados, de modo que se pueden repetir. Cada cifra tiene su origen en el registro de cifras, y el informe, las láminas y este visor pasan controles automáticos de cifras y de textos. El visor usa MapLibre GL JS y funciona sin internet con su imagen y su relieve propios.",
+     "El trabajo se hizo con la asistencia de un agente de IA, que escribió y corrió los scripts y armó los productos bajo la dirección y la revisión del autor: los criterios, las decisiones adoptadas y la revisión de cada producto son del autor."
+    ],
+    "items": [],
+    "fuente": "Fuente: informe, 3.2, 3.3, 4 y 4.6; registro de fuentes del proyecto."
+   }
+  ]
+ },
+ "bases": [
+  {
+   "id": "argenmap",
+   "titulo": "Argenmap (IGN)",
+   "requiere_conexion": true,
+   "atribucion": "<a href=\"https://www.ign.gob.ar/AreaServicios/Argenmap/IntroduccionV2\" target=\"_blank\">Instituto Geográfico Nacional</a> + <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>",
+   "teselas": "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png",
+   "esquema": "tms",
+   "maxzoom": 14
+  },
+  {
+   "id": "sentinel",
+   "titulo": "Imagen Sentinel-2 (propia)",
+   "requiere_conexion": false,
+   "atribucion": "Contiene datos modificados de Copernicus Sentinel (2026).",
+   "teselas": "datos/teselas/sentinel/{z}/{x}/{y}.webp",
+   "esquema": "xyz",
+   "maxzoom": 14
+  },
+  {
+   "id": "sombreado",
+   "titulo": "Relieve sombreado (propio)",
+   "requiere_conexion": false,
+   "atribucion": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "teselas": "datos/teselas/sombreado/{z}/{x}/{y}.webp",
+   "esquema": "xyz",
+   "maxzoom": 13
+  }
+ ],
+ "capas": [
+  {
+   "id": "tronco",
+   "titulo": "Tronco de la propuesta",
+   "grupo": "Propuesta",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El camino propuesto, de El Sosneado al portal N4.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/tronco.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "tunel",
+   "titulo": "Túnel (eje esquemático)",
+   "grupo": "Propuesta",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre el estudio del MOP (MOP, 2015).",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El eje del túnel, esquemático.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/tunel.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "portal",
+   "titulo": "Portal N4",
+   "grupo": "Propuesta",
+   "minzoom": 0,
+   "fuente": "Estudio del MOP (MOP, 2015).",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El portal argentino adoptado.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/portal.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "viaducto",
+   "titulo": "Viaducto de 621 m",
+   "grupo": "Obras",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "La llegada al portal N4.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/viaducto.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "puentes",
+   "titulo": "Puentes (9)",
+   "grupo": "Obras",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Los 9 puentes, como signo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/puentes.geojson",
+   "elementos": 9
+  },
+  {
+   "id": "puentes_largo",
+   "titulo": "Puentes con su largo",
+   "grupo": "Obras",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Los puentes con su largo sobre el tronco.",
+   "descargable": false,
+   "visible": true,
+   "archivo": "datos/capas/puentes_largo.geojson",
+   "elementos": 9
+  },
+  {
+   "id": "tramos_rio",
+   "titulo": "Tramos junto al río Atuel (3)",
+   "grupo": "Obras",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Los 3 tramos junto al río, con defensa de margen.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/tramos_rio.geojson",
+   "elementos": 3
+  },
+  {
+   "id": "reserva",
+   "titulo": "Reserva Laguna del Atuel",
+   "grupo": "Restricciones",
+   "minzoom": 0,
+   "fuente": "Ley 8516 de Mendoza (coordenadas de la ley).",
+   "licencia": "Ley 8516 de Mendoza (límite digitalizado de sus coordenadas): elaboración propia, uso con cita.",
+   "texto": "El límite de la Reserva, armado con las coordenadas de la ley.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/reserva.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "glaciares",
+   "titulo": "Glaciares (IANIGLA)",
+   "grupo": "Restricciones",
+   "minzoom": 0,
+   "fuente": "Inventario Nacional de Glaciares, IANIGLA.",
+   "licencia": "Inventario Nacional de Glaciares (IANIGLA): uso con cita de la fuente.",
+   "texto": "Glaciares inventariados.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/glaciares.geojson",
+   "elementos": 606
+  },
+  {
+   "id": "lim_internacional",
+   "titulo": "Límite internacional",
+   "grupo": "Base",
+   "minzoom": 0,
+   "fuente": "IGN.",
+   "licencia": "Instituto Geográfico Nacional: uso con cita de la fuente (ver condiciones en ign.gob.ar).",
+   "texto": "Límite con Chile.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/lim_internacional.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "rios",
+   "titulo": "Ríos y arroyos (IGN)",
+   "grupo": "Base",
+   "minzoom": 0,
+   "fuente": "IGN, hidrografía (posición aproximada).",
+   "licencia": "Instituto Geográfico Nacional: uso con cita de la fuente (ver condiciones en ign.gob.ar).",
+   "texto": "Cursos de agua perennes.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/rios.geojson",
+   "elementos": 327
+  },
+  {
+   "id": "lecho",
+   "titulo": "Lecho activo del río (Sentinel-2)",
+   "grupo": "Base",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre imágenes Sentinel-2.",
+   "licencia": "Contiene datos modificados de Copernicus Sentinel (2026).",
+   "texto": "El lecho activo visible en las imágenes, con el borde suavizado para dibujarlo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/lecho.geojson",
+   "elementos": 110
+  },
+  {
+   "id": "laguna",
+   "titulo": "Laguna El Sosneado",
+   "grupo": "Base",
+   "minzoom": 0,
+   "fuente": "IGN e imágenes Sentinel-2.",
+   "licencia": "Instituto Geográfico Nacional: uso con cita de la fuente (ver condiciones en ign.gob.ar).",
+   "texto": "La laguna.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/laguna.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "km",
+   "titulo": "Kilómetros del tronco",
+   "grupo": "Propuesta",
+   "minzoom": 9,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Cada 10 km a escala chica, cada 5 km a 1:100.000 y cada 1 km a 1:25.000.",
+   "descargable": false,
+   "visible": true,
+   "archivo": "datos/capas/km.geojson",
+   "elementos": 78
+  },
+  {
+   "id": "desvio",
+   "titulo": "Desvío de El Sosneado",
+   "grupo": "Propuesta",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El desvío en dos ramas.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/desvio.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "b3_punto",
+   "titulo": "Complejo fronterizo B-3",
+   "grupo": "Instalaciones",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El complejo, fuera de la Reserva.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/b3_punto.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "p6",
+   "titulo": "Parador de camiones P-6",
+   "grupo": "Instalaciones",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El parador de camiones.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/p6.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "servicios",
+   "titulo": "Servicios turísticos",
+   "grupo": "Instalaciones",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Servicios para el turismo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/servicios.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "puestos",
+   "titulo": "Puestos intermedios",
+   "grupo": "Instalaciones",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Puestos de atención.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/puestos.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "apartaderos",
+   "titulo": "Apartaderos",
+   "grupo": "Instalaciones",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Apartaderos sugeridos.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/apartaderos.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "amortiguacion",
+   "titulo": "Zona sugerida de amortiguación",
+   "grupo": "Propuesta",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Recomendación al ordenamiento.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/amortiguacion.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "urbana",
+   "titulo": "Área urbana de El Sosneado",
+   "grupo": "Base",
+   "minzoom": 11,
+   "fuente": "Elaboración propia sobre imágenes e IDE Mendoza.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "El pueblo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/urbana.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "rutas",
+   "titulo": "Rutas nacionales y provinciales",
+   "grupo": "Base",
+   "minzoom": 9.5,
+   "fuente": "IGN, red vial.",
+   "licencia": "Instituto Geográfico Nacional: uso con cita de la fuente (ver condiciones en ign.gob.ar).",
+   "texto": "Rutas con su número.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/rutas.geojson",
+   "elementos": 12
+  },
+  {
+   "id": "lim_depto",
+   "titulo": "Límite departamental",
+   "grupo": "Base",
+   "minzoom": 11,
+   "fuente": "IDE Mendoza.",
+   "licencia": "IDE Mendoza: uso con cita de la fuente (ver condiciones del organismo).",
+   "texto": "Límite entre San Rafael y Malargüe.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/lim_depto.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "zsf",
+   "titulo": "Zona de Seguridad de Frontera",
+   "grupo": "Restricciones",
+   "minzoom": 11,
+   "fuente": "IDE Mendoza.",
+   "licencia": "IDE Mendoza: uso con cita de la fuente (ver condiciones del organismo).",
+   "texto": "Límite de la zona de frontera.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/zsf.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "sitios",
+   "titulo": "Sitios turísticos e históricos",
+   "grupo": "Base",
+   "minzoom": 11,
+   "fuente": "IGN, OpenStreetMap y aporte del autor.",
+   "licencia": "© colaboradores de OpenStreetMap, ODbL 1.0.",
+   "texto": "Laguna, termas, ruinas y SOMINAR.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/sitios.geojson",
+   "elementos": 4
+  },
+  {
+   "id": "obras",
+   "titulo": "Alcantarillas y obras menores",
+   "grupo": "Obras",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Cada obra con su tipo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/obras.geojson",
+   "elementos": 113
+  },
+  {
+   "id": "rotondas",
+   "titulo": "Rotondas del desvío",
+   "grupo": "Propuesta",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Las cuatro rotondas.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/rotondas.geojson",
+   "elementos": 4
+  },
+  {
+   "id": "doble_calzada",
+   "titulo": "Doble calzada",
+   "grupo": "Propuesta",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Una calzada por tubo.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/doble_calzada.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "transversales",
+   "titulo": "Perfiles transversales",
+   "grupo": "Propuesta",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre Copernicus DEM.",
+   "licencia": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "texto": "Los tres perfiles transversales.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/transversales.geojson",
+   "elementos": 3
+  },
+  {
+   "id": "senda",
+   "titulo": "Senda de arreo sugerida",
+   "grupo": "Propuesta",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Supuesto de trabajo, a validar con los puesteros.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/senda.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "pasos",
+   "titulo": "Pasos de hacienda",
+   "grupo": "Propuesta",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "21 a nivel y 15 inferiores.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/pasos.geojson",
+   "elementos": 36
+  },
+  {
+   "id": "zona_camino",
+   "titulo": "Zona de camino de 100 m",
+   "grupo": "Propuesta",
+   "minzoom": 13,
+   "fuente": "Elaboración propia con la norma vial (DNV, 2010).",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "50 m a cada lado del eje.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/zona_camino.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "b3_huella",
+   "titulo": "Huella del complejo B-3",
+   "grupo": "Instalaciones",
+   "minzoom": 14.5,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Huella esquemática.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/b3_huella.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "peaje",
+   "titulo": "Plaza de peaje",
+   "grupo": "Instalaciones",
+   "minzoom": 14.5,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Plataforma esquemática.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/peaje.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "carriles",
+   "titulo": "Carriles de B-3",
+   "grupo": "Instalaciones",
+   "minzoom": 14.5,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Carga y turismo, esquemáticos.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/carriles.geojson",
+   "elementos": 2
+  },
+  {
+   "id": "parcelas",
+   "titulo": "Parcelas afectadas (8)",
+   "grupo": "Afectación",
+   "minzoom": 11,
+   "fuente": "IDE Mendoza, parcelario; elaboración propia.",
+   "licencia": "IDE Mendoza: uso con cita de la fuente (ver condiciones del organismo).",
+   "texto": "Solo nomenclatura, superficie y porcentaje afectado.",
+   "descargable": true,
+   "visible": true,
+   "archivo": "datos/capas/parcelas.geojson",
+   "elementos": 8,
+   "nota": "El 94 % de la franja no tiene parcela registrada (no significa tierra fiscal)."
+  },
+  {
+   "id": "afectacion",
+   "titulo": "Afectación de la zona de camino",
+   "grupo": "Afectación",
+   "minzoom": 13,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "La superficie afectada, con su rango.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/afectacion.geojson",
+   "elementos": 3
+  },
+  {
+   "id": "drenaje",
+   "titulo": "Red de drenaje derivada",
+   "grupo": "Encendibles",
+   "minzoom": 9.5,
+   "fuente": "Elaboración propia sobre Copernicus DEM.",
+   "licencia": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "texto": "Umbral de 10.000 celdas.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/drenaje.geojson",
+   "elementos": 537
+  },
+  {
+   "id": "cd01",
+   "titulo": "Cuenca destacada CD-01",
+   "grupo": "Encendibles",
+   "minzoom": 9.5,
+   "fuente": "Elaboración propia sobre Copernicus DEM.",
+   "licencia": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+   "texto": "La cuenca destacada.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/cd01.geojson",
+   "elementos": 1
+  },
+  {
+   "id": "descartados",
+   "titulo": "Alternativas descartadas (en gris)",
+   "grupo": "Encendibles",
+   "minzoom": 9.5,
+   "fuente": "Elaboración propia sobre IGN y Copernicus DEM.",
+   "licencia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+   "texto": "Lo que se comparó y no se eligió, en gris como en la lámina 4/4.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/descartados.geojson",
+   "elementos": 4
+  },
+  {
+   "id": "nieve",
+   "titulo": "Nieve en el suelo por km (Sentinel-2)",
+   "grupo": "Encendibles",
+   "minzoom": 0,
+   "fuente": "Elaboración propia sobre imágenes Sentinel-2 (junio a septiembre, 2019-2025).",
+   "licencia": "Contiene datos modificados de Copernicus Sentinel (2026).",
+   "texto": "Más oscuro, más fechas con nieve.",
+   "descargable": true,
+   "visible": false,
+   "archivo": "datos/capas/nieve.geojson",
+   "elementos": 78
+  }
+ ],
+ "zona": [
+  -70.25078,
+  -35.13747,
+  -69.51202,
+  -34.53733
+ ],
+ "version": "0.3 (muestra)",
+ "fecha": "11/11/2026",
+ "licencias": {
+  "propia": "Elaboración propia (trabajo académico): uso con cita del autor.",
+  "ign": "Instituto Geográfico Nacional: uso con cita de la fuente (ver condiciones en ign.gob.ar).",
+  "idemza": "IDE Mendoza: uso con cita de la fuente (ver condiciones del organismo).",
+  "ianigla": "Inventario Nacional de Glaciares (IANIGLA): uso con cita de la fuente.",
+  "ley": "Ley 8516 de Mendoza (límite digitalizado de sus coordenadas): elaboración propia, uso con cita.",
+  "osm": "© colaboradores de OpenStreetMap, ODbL 1.0.",
+  "copernicus_dem": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+  "sentinel": "Contiene datos modificados de Copernicus Sentinel (2026)."
+ },
+ "recorrido": [
+  {
+   "titulo": "El problema",
+   "caja": [
+    -70.25078,
+    -35.13747,
+    -69.51202,
+    -34.53733
+   ],
+   "texto": "El paso Las Leñas sería un túnel binacional de doble tubo entre el sur de Mendoza y la Región de O'Higgins, en Chile. Del lado argentino, el camino que habría que transformar es la RP 220, que arranca dentro de El Sosneado y termina en la cordillera. Tal como está, cada camión recorrería 1,86 km por calles del pueblo, habría 0,39 km por encima de la pendiente máxima absoluta (DNV, 2010) y 324 m de ruta sobre el lecho activo del Atuel."
+  },
+  {
+   "titulo": "El corredor",
+   "caja": [
+    -70.14522,
+    -35.08599,
+    -69.58089,
+    -34.6071
+   ],
+   "texto": "La propuesta: un desvío de 5,5 km en El Sosneado; la RP 220 mejorada hasta el km 66,8 y una traza nueva desde el km 66,9 hasta el portal N4, en el km 77,5. Desde el km 37,1 el camino entra en la Reserva Laguna del Atuel y la recorre a lo largo de 40,4 km. De San Rafael a Santiago serían 404,2 km, frente a 537,8 km por el Cristo Redentor."
+  },
+  {
+   "titulo": "El Sosneado",
+   "caja": [
+    -69.61051,
+    -35.08825,
+    -69.55487,
+    -35.06372
+   ],
+   "capas": [
+    "descartados"
+   ],
+   "texto": "El desvío, en dos ramas y con cuatro rotondas, saca el tránsito pesado del pueblo: de 1,86 km por camión a ninguno. La rama norte va por encima de la loma, a 334 m del área urbana; en gris, la opción al pie de la loma, que pasaba a 30 m y se descartó. El parador de camiones P-6, de 10 ha, está sobre el tronco común; P-4, también en gris, quedaba a 148 m del área urbana."
+  },
+  {
+   "titulo": "Peaje y complejo B-3",
+   "caja": [
+    -69.87534,
+    -34.88405,
+    -69.85519,
+    -34.86504
+   ],
+   "texto": "Entre los km 34,2 y 34,4 está la plaza de peaje, una sola y bidireccional; 314 m más adelante, el complejo fronterizo B-3, de 20 ha, fuera de la Reserva. Así, dentro del área protegida quedan solo 2,25 ha de instalaciones menores: son 17,8 ha que no se construyen dentro. La contrapartida: 43,7 km de camino entre los controles y el túnel."
+  },
+  {
+   "titulo": "Junto al río Atuel",
+   "caja": [
+    -69.97593,
+    -34.83854,
+    -69.93283,
+    -34.81924
+   ],
+   "base": "sentinel",
+   "texto": "Pasando la Laguna El Sosneado, en el km 41,7, el camino sigue pegado al río. En tres tramos corre junto al Atuel sin cruzarlo; el más largo va del km 44,2 al 46,9. Ahí no van puentes: el terraplén se eleva y se protege con una defensa de margen del lado del río. En celeste, el lecho activo visible en la imagen Sentinel-2."
+  },
+  {
+   "titulo": "El portal N4",
+   "caja": [
+    -70.13541,
+    -34.71198,
+    -70.08448,
+    -34.61521
+   ],
+   "base": "sentinel",
+   "capas": [
+    "descartados"
+   ],
+   "texto": "Desde el km 66,9 una traza nueva sigue el pie de la ladera hasta el portal N4, a 2.387 m. Cruza un cauce sin nombre, no el Atuel, con un viaducto de 621 m, y se abre en doble calzada los últimos 333 m. En gris, lo descartado: el acceso a N1, que pedía un viaducto longitudinal de unos 917 m dentro de la reserva hídrica, y el sitio A-3 para el complejo, dentro de la Reserva y a 14 m del lecho activo."
+  },
+  {
+   "titulo": "El invierno",
+   "caja": [
+    -70.14522,
+    -35.08599,
+    -69.58089,
+    -34.6071
+   ],
+   "capas": [
+    "nieve"
+   ],
+   "texto": "La nieve es la gran diferencia entre los dos extremos del camino: en el km 0 aparece en el 3 % de las fechas con imagen, y junto al portal N4, en el 78 %. Con los días de nevada de cada año se estimó que Las Leñas tendría entre 28 y 45 días de cierre por año, con una mediana de 34: es un orden de magnitud. En el tramo final se marcan unos 5,3 km para estudiar cobertizos o defensas, sin datos de aludes."
+  },
+  {
+   "titulo": "La economía",
+   "caja": [
+    -70.14522,
+    -35.08599,
+    -69.58089,
+    -34.6071
+   ],
+   "texto": "La inversión del acceso argentino estaría entre 292,0 y 542,1 millones de dólares de agosto de 2014, sin el túnel; con la parte argentina del túnel, entre 1.038,6 y 1.288,7 millones. Con la tarifa del MOP, el peaje cubriría solo entre el 34 y el 75 % de la operación y el mantenimiento: la obra no se paga con peaje y requiere financiamiento público, como concluyó el MOP (MOP, 2015)."
+  }
+ ],
+ "mde": {
+  "archivo": "datos/mde_60m.bin",
+  "oeste": -70.25078,
+  "norte": -34.53733,
+  "dx": 0.0006566790174367888,
+  "dy": 0.0005426230397742688,
+  "ancho": 1125,
+  "alto": 1106,
+  "escala": 0.1
+ },
+ "dron": {
+  "paradas": [
+   {
+    "titulo": "El Sosneado",
+    "km": 0.0,
+    "objetivo": [
+     -69.59733,
+     -35.07247
+    ],
+    "texto": "Km 0, en la rotonda R2, donde se juntan las dos ramas del desvío: 5,5 km de camino nuevo con cuatro rotondas, para que el tránsito pesado no entre al pueblo. Medio kilómetro después, a la izquierda, el parador de camiones P-6, de 10 ha."
+   },
+   {
+    "titulo": "Peaje y complejo B-3",
+    "km": 35.136,
+    "objetivo": [
+     -69.86641,
+     -34.87191
+    ],
+    "texto": "Entre los km 34,2 y 34,4, la plaza de peaje, una sola y bidireccional. 314 m más adelante, a la derecha, el complejo fronterizo B-3, de 20 ha, fuera de la Reserva: los controles no se construyen dentro del área protegida."
+   },
+   {
+    "titulo": "Laguna El Sosneado",
+    "km": 41.656,
+    "objetivo": [
+     -69.91749,
+     -34.84325
+    ],
+    "texto": "Desde el km 37,1 el camino está dentro de la Reserva Laguna del Atuel. En el km 41,7, a la derecha y a 162 m del eje, la laguna."
+   },
+   {
+    "titulo": "Junto al río Atuel",
+    "km": 45.537,
+    "objetivo": [
+     -69.95453,
+     -34.8296
+    ],
+    "texto": "Del km 44,2 al 46,9, el más largo de los tres tramos en que el camino corre junto al río sin cruzarlo: terraplén elevado y defensa de margen del lado del río, en lugar de puentes."
+   },
+   {
+    "titulo": "Termas y ruinas",
+    "km": 58.097,
+    "objetivo": [
+     -70.05891,
+     -34.77013
+    ],
+    "texto": "En el km 58,1, las termas del Sosneado y, a 15 m del eje, las ruinas del ex Hotel Termas. Ahí se propone solo un acceso turístico mínimo: estacionamiento, sanitarios y señalización."
+   },
+   {
+    "titulo": "SOMINAR",
+    "km": 73.244,
+    "objetivo": [
+     -70.10441,
+     -34.65343
+    ],
+    "texto": "Desde el km 66,9 el camino deja la RP 220 y sigue por una traza nueva. En el km 73,2, a 226 m del eje, los restos de la ex planta de azufre SOMINAR, un sitio histórico que convendría señalizar."
+   },
+   {
+    "titulo": "El viaducto",
+    "km": 76.906,
+    "objetivo": [
+     -70.12643,
+     -34.62256
+    ],
+    "texto": "Un viaducto de 621 m cruza un cauce sin nombre, no el Atuel. Ocupa 180 m² de cauce en lugar de los 3.058 m² de un terraplén con defensa, en una reserva hídrica."
+   },
+   {
+    "titulo": "Portal N4",
+    "km": 77.527,
+    "objetivo": [
+     -70.12887,
+     -34.62062
+    ],
+    "texto": "El portal argentino, a 2.387 m, en el km 77,5. Los últimos 333 m son de doble calzada, una por cada tubo del túnel, que tiene 10,30 km entre portales, 7,48 km de ellos en la Argentina."
+   }
+  ],
+  "altura_m": 450,
+  "orbita_m": 1400,
+  "inicio": "Recorrido 3D de la propuesta, de El Sosneado al portal N4, en vista de dron por encima del camino. El relieve es el modelo de elevación de 30 m, sin exageración vertical.",
+  "fin": "Trabajo académico: no es cartografía oficial. Relieve: Copernicus DEM. Imagen: Sentinel-2 de febrero de 2026. Luca Valentín Moschella."
+ },
+ "relieve": {
+  "teselas": "datos/teselas/relieve/{z}/{x}/{y}.png",
+  "minzoom": 8,
+  "maxzoom": 12,
+  "codificacion": "terrarium",
+  "atribucion": "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 y © Airbus Defence and Space GmbH 2014-2018, provisto en el marco de COPERNICUS por la Unión Europea y la ESA.",
+  "bounds": [
+   -70.47015,
+   -35.31774,
+   -69.29414,
+   -34.35708
+  ]
+ }
+}

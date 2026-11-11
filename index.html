@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acceso argentino al paso Las Leñas · visor</title>
+<link rel="stylesheet" href="css/maplibre-gl.css">
+<link rel="stylesheet" href="css/visor.css">
+</head>
+<body>
+<header id="cabecera">
+  <div class="titulos">
+    <h1 id="titulo">Acceso argentino al paso Las Leñas</h1>
+    <p id="subtitulo">Visor de la propuesta: de El Sosneado al portal N4</p>
+  </div>
+  <nav>
+    <button id="b-panel" class="activo" title="Mostrar u ocultar las capas">Capas</button>
+    <button id="b-perfiles" title="Perfil longitudinal y perfiles transversales">Perfiles</button>
+    <button id="b-recorrido" title="La propuesta en ocho pasos">Recorrido guiado</button>
+    <button id="b-vuelo" title="Vuelo 3D sobre el camino, con paradas">Vuelo 3D</button>
+    <form id="ir-km" title="Ir a un kilómetro del tronco, contado desde El Sosneado">
+      <label for="km">Ir al km</label><input id="km" type="text" inputmode="decimal" placeholder="0 a 77,5" autocomplete="off"><button type="submit">Ir</button>
+    </form>
+    <button id="b-nosesabe">Lo que no se sabe</button>
+    <button id="b-como" title="Los métodos, los datos y las herramientas">Cómo se hizo</button>
+    <button id="b-descargas">Descargas</button>
+    <button id="b-acerca">Acerca de</button>
+  </nav>
+</header>
+<main>
+  <aside id="panel">
+    <section>
+      <h2>Escala y detalle</h2>
+      <p id="escala" class="escala">—</p>
+      <p id="nivel" class="nivel"></p>
+    </section>
+    <section>
+      <h2>Mapa base</h2>
+      <div id="bases"></div>
+      <p id="aviso-base" class="aviso" hidden></p>
+    </section>
+    <section>
+      <h2>Capas y leyenda</h2>
+      <p class="nota">Cada capa aparece a partir de su escala, como en las láminas. Las grises todavía no se ven a esta escala.</p>
+      <div id="capas"></div>
+    </section>
+  </aside>
+  <div id="zona-mapa">
+    <div id="mapa"></div>
+    <section id="recorrido" class="tarjeta" hidden></section>
+    <section id="dron" hidden></section>
+    <div id="dron-km" hidden></div>
+    <section id="perfiles" hidden>
+      <div class="p-cabecera">
+        <div class="pestanas"><button data-p="longitudinal" class="activo">Longitudinal</button><button data-p="transversales">Transversales</button><button data-p="dibujado">Dibujar un perfil</button></div>
+        <p id="p-nota"></p>
+        <div id="p-acciones" hidden><button id="p-terminar">Terminar</button><button id="p-nuevo">Dibujar otro</button><button id="p-borrar">Borrar</button></div>
+        <button class="cerrar" id="p-cerrar" title="Cerrar los perfiles">×</button>
+      </div>
+      <div id="p-grafico"></div>
+    </section>
+  </div>
+</main>
+<footer id="pie"></footer>
+
+<div id="aviso-carga" class="aviso-carga" hidden></div>
+<div id="modal" class="modal" hidden>
+  <div class="caja">
+    <button class="cerrar" id="m-cerrar" title="Cerrar">×</button>
+    <div id="m-contenido"></div>
+  </div>
+</div>
+
+<script src="js/maplibre-gl.js"></script>
+<script src="js/visor.js"></script>
+<script src="js/perfiles.js"></script>
+<script src="js/recorrido.js"></script>
+<script src="js/dron.js"></script>
+</body>
+</html>

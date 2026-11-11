@@ -1,0 +1,43 @@
+VISOR DEL ACCESO ARGENTINO AL PASO LAS LEÑAS
+Luca Valentín Moschella · Cartografía Aplicada · UMaza · trabajo académico
+
+EN LÍNEA
+https://moschellavalentin-jpg.github.io/visor-paso-las-lenas/
+(cualquier navegador actual, en la computadora o en el celular)
+
+SIN CONEXIÓN, DESDE ESTA CARPETA
+- Esta carpeta (VISOR_PASO_LAS_LENAS) es la única completa del visor: tiene la página y sus datos.
+- Doble clic en ABRIR_VISOR.bat: abre una ventana negra (el servidor local) y el visor en el navegador.
+  Para cerrarlo, cerrar esa ventana. No se instala nada; hace falta Windows y un navegador actual.
+- No abrir index.html con doble clic: como archivo (file:///) el navegador no deja leer los datos.
+  Si se hace, el visor lo avisa y explica cómo abrirlo.
+- Sin internet funciona igual: el mapa base del IGN (Argenmap) necesita conexión, pero el visor
+  cambia solo a la imagen Sentinel-2 propia si no la hay. También se puede elegir el relieve sombreado.
+
+QUÉ SE PUEDE HACER
+- Capas: cada una aparece a partir de su escala, como en las láminas; la leyenda dice desde cuándo.
+- Perfiles: el longitudinal del tronco y del túnel, y los tres transversales. Al pasar el mouse,
+  el punto se marca en el mapa; con un clic, el mapa va a ese punto.
+- Dibujar un perfil (en Perfiles): clic en el mapa para marcar puntos, doble clic para cerrar; da el perfil
+  del terreno y su pendiente, leídos del modelo de elevación de 60 m que está en datos/mde_60m.bin.
+- Recorrido guiado: la propuesta en ocho pasos, de El Sosneado al portal N4.
+- Vuelo 3D: sigue el camino de El Sosneado al portal N4 con ocho paradas y una tablita de referencias;
+  se puede pausar, cambiar la velocidad e ir a cada parada (barra espaciadora: pausa; flechas: parada
+  anterior o siguiente; Esc: salir).
+- Ir al km: lleva a un kilómetro del tronco (de 0 a 77,5) y dice en qué tramo está y qué hay cerca.
+- Lo que no se sabe; Cómo se hizo (los métodos, los datos y las herramientas, con «ver en el mapa»);
+  Descargas (cada capa con su fuente y su licencia); Acerca de.
+
+QUÉ HAY EN ESTA CARPETA
+- index.html, css y js: la página y MapLibre GL JS (licencia BSD de 3 cláusulas).
+- datos/config.json: textos, capas, recorrido, paradas del vuelo y fuentes del visor.
+- datos/perfiles.json: los perfiles, con los mismos datos que la lámina 2/4.
+- datos/mde_60m.bin: el modelo de elevación de 60 m del perfil dibujado (Copernicus DEM).
+- datos/capas: las capas en GeoJSON (WGS 84), que también se pueden descargar desde el visor.
+- datos/teselas: la imagen Sentinel-2, el relieve sombreado y el relieve para el 3D (Copernicus DEM),
+  recortados a la zona del corredor.
+- datos/glifos: la tipografía de los rótulos (Open Sans, licencia Apache 2.0).
+- datos/fotos: fotos de la Laguna El Sosneado (diciembre de 2025, L. V. Moschella).
+
+Las parcelas llevan solo la nomenclatura, nunca titulares.
+Trabajo académico: no es cartografía oficial.
