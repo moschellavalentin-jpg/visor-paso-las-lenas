@@ -2015,7 +2015,7 @@
       "desde": 53.8,
       "hasta": 53.9,
       "largo_m": 90,
-      "defensa": "no: la defensa de margen (km 53,9 a 54,6) empieza o termina en el borde de este tramo",
+      "defensa": "no: la defensa de margen (km 53,9 a 54,6) empieza donde termina este tramo",
       "con_defensa": "no",
       "cauce_km2": 777.3,
       "obras_menores": []
