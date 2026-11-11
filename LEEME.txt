@@ -13,8 +13,9 @@ SIN CONEXIÓN, DESDE ESTA CARPETA
   Si se hace, el visor lo avisa y explica cómo abrirlo.
 - Sin internet funciona igual: el mapa base del IGN (Argenmap) necesita conexión, pero el visor
   cambia solo a la imagen Sentinel-2 propia si no la hay. También se puede elegir el relieve sombreado.
+  Las dos bases propias cubren toda Mendoza; con conexión, Argenmap se ve debajo, fuera del mosaico.
 
-QUÉ SE PUEDE HACER
+QUÉ SE PUEDE HACER   (el botón «?» abre la ayuda «Cómo usar», con un glosario)
 - Capas: cada una aparece a partir de su escala, como en las láminas; la leyenda dice desde cuándo.
 - Perfiles: el longitudinal del tronco y del túnel, y los tres transversales. Al pasar el mouse,
   el punto se marca en el mapa; con un clic, el mapa va a ese punto.
@@ -24,9 +25,15 @@ QUÉ SE PUEDE HACER
 - Vuelo 3D: sigue el camino de El Sosneado al portal N4 con ocho paradas y una tablita de referencias;
   se puede pausar, cambiar la velocidad e ir a cada parada (barra espaciadora: pausa; flechas: parada
   anterior o siguiente; Esc: salir).
+- Agua: la escorrentía (partículas que siguen la dirección del flujo) y el anegamiento con un nivel de
+  0,5, 1, 2 o 3 m sobre su cauce, con la lista de cruces de cauce (con su obra prevista) y de tramos a lo
+  largo del río (con su defensa de margen). Escenario indicativo, no modelo hidráulico: no hay caudales
+  ni lluvias de diseño.
 - Ir al km: lleva a un kilómetro del tronco (de 0 a 77,5) y dice en qué tramo está y qué hay cerca.
 - Lo que no se sabe; Cómo se hizo (los métodos, los datos y las herramientas, con «ver en el mapa»);
-  Descargas (cada capa con su fuente y su licencia); Acerca de.
+  Descargas (cada capa con su fuente y su licencia); Informe (el informe y las cuatro láminas en PDF);
+  Acerca de.
+- En el celular, los botones están en «☰ Menú» y las capas se abren como un cajón.
 
 QUÉ HAY EN ESTA CARPETA
 - index.html, css y js: la página y MapLibre GL JS (licencia BSD de 3 cláusulas).
@@ -34,8 +41,10 @@ QUÉ HAY EN ESTA CARPETA
 - datos/perfiles.json: los perfiles, con los mismos datos que la lámina 2/4.
 - datos/mde_60m.bin: el modelo de elevación de 60 m del perfil dibujado (Copernicus DEM).
 - datos/capas: las capas en GeoJSON (WGS 84), que también se pueden descargar desde el visor.
-- datos/teselas: la imagen Sentinel-2, el relieve sombreado y el relieve para el 3D (Copernicus DEM),
-  recortados a la zona del corredor.
+- datos/teselas: la imagen Sentinel-2 y el relieve sombreado de toda Mendoza (zoom 5 a 11) y de la zona
+  del corredor (zoom 12 a 14), y el relieve para el 3D (Copernicus DEM).
+- datos/ayuda: la captura de la ayuda «Cómo usar».
+- descargas: el informe y las cuatro láminas en PDF (los mismos de la entrega).
 - datos/glifos: la tipografía de los rótulos (Open Sans, licencia Apache 2.0).
 - datos/fotos: fotos de la Laguna El Sosneado (diciembre de 2025, L. V. Moschella).
 
